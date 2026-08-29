@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mmodemmo SBA Tracking System — Report Cards, Attendance & Levies on One System</title>
+<meta name="description" content="A one-time-purchase desktop and online system for Ghanaian schools: attendance, levies, SBA marks, mock exams, and instant report cards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EAE0C4;      /* manila ledger paper */
+    --paper-dark:#DDD0AC;
+    --ink:#1E3A5F;        /* stamp-blue ink */
+    --ink-deep:#16283F;
+    --chalk:#2F5233;      /* chalkboard green */
+    --chalk-deep:#20391F;
+    --mark:#B23A32;       /* red marking-pen accent */
+    --text:#231F18;
+    --text-soft:#4B4432;
+    --line: rgba(35,31,24,0.16);
+    --card:#F3ECD8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Zilla Slab', serif;
+    color:var(--ink-deep);
+    margin:0 0 .4em 0;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:.02em; }
+  a{ color:var(--ink); }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  .ruled{
+    background-image: repeating-linear-gradient(
+      to bottom, transparent, transparent 38px, var(--line) 39px);
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px; max-width:1080px; margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Zilla Slab',serif; font-weight:700; font-size:1.25rem; color:var(--ink-deep); }
+  .brand .dot{ width:10px; height:10px; border-radius:50%; background:var(--mark); display:inline-block; }
+  .topbar nav a{
+    margin-left:22px; text-decoration:none; color:var(--text-soft); font-size:.92rem; font-weight:600;
+  }
+  .topbar nav a:hover{ color:var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: 40px 0 70px; }
+  .hero-grid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:48px; align-items:center; }
+  @media (max-width: 860px){ .hero-grid{ grid-template-columns:1fr; } }
+  .eyebrow{
+    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.78rem;
+    color:var(--chalk-deep); background:rgba(47,82,51,0.12); padding:5px 10px;
+    border-radius:3px; margin-bottom:16px; letter-spacing:.04em;
+  }
+  .hero h1{ font-size:clamp(2.1rem, 4vw, 3.1rem); line-height:1.08; }
+  .hero p.lede{ font-size:1.15rem; color:var(--text-soft); max-width:46ch; margin-top:14px; }
+  .cta-row{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
+  .btn{
+    display:inline-block; padding:13px 24px; border-radius:3px; font-weight:600;
+    text-decoration:none; font-size:.98rem; border:2px solid transparent; transition:transform .12s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn-primary{ background:var(--chalk); color:var(--paper); border-color:var(--chalk); }
+  .btn-primary:hover{ background:var(--chalk-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-deep); border-color:var(--ink-deep); }
+
+  /* Report card mock — signature element */
+  .report-card{
+    background:#fff; border:1px solid var(--line); border-radius:2px;
+    padding:26px 24px; box-shadow: 6px 6px 0 rgba(30,58,95,0.14);
+    position:relative; transform:rotate(-1.2deg);
+  }
+  .report-card .rc-head{ display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:10px;}
+  .report-card .rc-head span{ font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--text-soft);}
+  .report-card table{ width:100%; border-collapse:collapse; font-size:.85rem; }
+  .report-card td, .report-card th{ padding:5px 4px; border-bottom:1px dashed var(--line); text-align:left; }
+  .report-card th{ font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:var(--text-soft); text-transform:uppercase; letter-spacing:.04em;}
+  .stamp{
+    position:absolute; right:22px; bottom:22px; width:88px; height:88px;
+    border:3px solid var(--mark); border-radius:50%; color:var(--mark);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:.78rem;
+    transform:rotate(11deg); opacity:.85; letter-spacing:.03em;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:64px 0; }
+  .section-head{ max-width:60ch; margin-bottom:36px; }
+  .section-head .eyebrow{ margin-bottom:10px; }
+  .section-head p{ color:var(--text-soft); }
+
+  /* ---------- How it works ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  @media (max-width:760px){ .steps{ grid-template-columns:1fr; } }
+  .step{ background:var(--card); border:1px solid var(--line); border-radius:3px; padding:22px 20px; }
+  .step .num{ font-family:'IBM Plex Mono',monospace; color:var(--mark); font-weight:700; font-size:.85rem; }
+  .step h3{ font-size:1.1rem; margin:8px 0 6px; }
+  .step p{ color:var(--text-soft); font-size:.94rem; margin:0; }
+
+  /* ---------- Feature ledger ---------- */
+  .ledger{ border-top:2px solid var(--ink); }
+  .ledger-row{ display:grid; grid-template-columns:220px 1fr; gap:28px; padding:26px 0; border-bottom:1px solid var(--line); }
+  @media (max-width:760px){ .ledger-row{ grid-template-columns:1fr; gap:10px; } }
+  .ledger-row .who{ font-family:'IBM Plex Mono',monospace; font-size:.8rem; color:var(--chalk-deep); text-transform:uppercase; letter-spacing:.04em; padding-top:2px; }
+  .ledger-row ul{ margin:0; padding-left:1.1em; color:var(--text-soft); }
+  .ledger-row li{ margin-bottom:7px; }
+  .ledger-row li b{ color:var(--text); }
+
+  /* ---------- Pricing band ---------- */
+  .price-band{
+    background:var(--ink-deep); color:var(--paper); border-radius:4px;
+    padding:38px 32px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .price-band h2{ color:#fff; margin:0; font-size:1.5rem; }
+  .price-band p{ margin:8px 0 0; color:#C9D2DD; max-width:44ch; }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{ border-bottom:1px solid var(--line); padding:18px 0; }
+  .faq-item summary{ cursor:pointer; font-weight:600; font-size:1.02rem; color:var(--ink-deep); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{ content:"+"; font-family:'IBM Plex Mono',monospace; color:var(--mark); font-size:1.2rem; }
+  .faq-item[open] summary::after{ content:"–"; }
+  .faq-item p{ color:var(--text-soft); margin:10px 0 0; max-width:70ch; }
+  .faq-cols{ columns:2; column-gap:48px; }
+  @media (max-width:800px){ .faq-cols{ columns:1; } }
+  .faq-cols .faq-item{ break-inside: avoid; }
+  .faq-group-title{ font-family:'IBM Plex Mono',monospace; font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; color:var(--chalk-deep); margin:26px 0 4px; }
+
+  /* ---------- Demo/Contact ---------- */
+  .contact{ background:var(--card); border:1px solid var(--line); border-radius:4px; padding:40px; display:grid; grid-template-columns:1.2fr .8fr; gap:36px; }
+  @media (max-width:800px){ .contact{ grid-template-columns:1fr; padding:26px; } }
+  .video-frame{ position:relative; padding-top:56.25%; background:var(--ink-deep); border-radius:3px; overflow:hidden; }
+  .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .qr-box{ text-align:center; background:#fff; border:1px solid var(--line); border-radius:3px; padding:20px; }
+  .qr-box img{ width:170px; height:170px; display:block; margin:0 auto 10px; }
+  .qr-box .cap{ font-family:'IBM Plex Mono',monospace; font-size:.78rem; color:var(--text-soft); }
+  .contact-links{ margin-top:18px; }
+  .contact-links a{ display:block; margin-bottom:8px; font-weight:600; text-decoration:none; }
+
+  footer{ padding:30px 0 50px; color:var(--text-soft); font-size:.85rem; border-top:1px solid var(--line); }
+  footer a{ color:var(--text-soft); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="dot"></span>Mmodemmo</div>
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Demo &amp; Contact</a>
+  </nav>
+</div>
+
+<header class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">FOR SCHOOL OWNERS &amp; ADMINISTRATORS</span>
+      <h1>Stop chasing teachers for mark sheets.</h1>
+      <p class="lede">Mmodemmo SBA Tracking System keeps attendance, levies, SBA marks, mock exams, and report cards moving automatically — on one system your school owns completely. No more weekends spent compiling report cards by hand.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Book a demo</a>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="rc-head">
+        <strong>Terminal Report Card</strong>
+        <span>AUTO-GENERATED</span>
+      </div>
+      <table>
+        <tr><th>Subject</th><th>Class Score</th><th>Exam</th><th>Grade</th></tr>
+        <tr><td>Mathematics</td><td>28</td><td>62</td><td>A</td></tr>
+        <tr><td>English Language</td><td>25</td><td>58</td><td>B</td></tr>
+        <tr><td>Integrated Science</td><td>27</td><td>60</td><td>A</td></tr>
+        <tr><td>Computing</td><td>29</td><td>65</td><td>A</td></tr>
+      </table>
+      <div class="stamp">READY<br>IN<br>SECONDS</div>
+    </div>
+  </div>
+</header>
+
+<section id="how" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">HOW IT WORKS</span>
+    <h2>Three steps, then it runs itself</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">01</div>
+      <h3>Set up on the desktop</h3>
+      <p>Install Mmodemmo on one school computer, add your students, teachers, subjects and grading scale.</p>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <h3>Add teachers &amp; hand out access</h3>
+      <p>Give each teacher a PIN and link to the online portal — or hand out an Excel sheet if they'd rather not use it.</p>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <h3>Everything else is automatic</h3>
+      <p>Report cards, BECE analysis, SMS results to parents, and backups all happen without you touching a spreadsheet.</p>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">WHAT'S INCLUDED</span>
+    <h2>Built for how Ghanaian schools actually run</h2>
+    <p>Every feature below is included in a single purchase — desktop and online portal together.</p>
+  </div>
+
+  <div class="ledger">
+    <div class="ledger-row">
+      <div class="who">Admin — Desktop</div>
+      <ul>
+        <li><b>Add and manage teachers</b>, assign them to classes, and issue portal PINs and links.</li>
+        <li><b>BECE Results Analysis</b> — import BECE result files (PDF/HTML) and get automatic chart-based analysis, exportable to Excel.</li>
+        <li><b>Custom subjects &amp; grading scales</b> — rename or add subjects and set grading bands to match your school's own standard.</li>
+        <li><b>Teacher records</b> — keep staff records and output-of-work on file inside the system.</li>
+        <li><b>Export anything</b> — attendance, levies, marks, and BECE results all export to PDF or Excel.</li>
+      </ul>
+    </div>
+
+    <div class="ledger-row">
+      <div class="who">Teachers — Online Portal</div>
+      <ul>
+        <li>Mark attendance and record daily levy payments from any phone or computer browser.</li>
+        <li>Enter SBA marks, and (JHS only) mock exam marks.</li>
+        <li>Set behaviour attributes for assigned classes — Attitude, Conduct, Interest, and Remarks.</li>
+        <li>Prefer paper? Admin can hand out an Excel template instead — same data still flows into the system.</li>
+      </ul>
+    </div>
+
+    <div class="ledger-row">
+      <div class="who">Admin Dashboard — Online</div>
+      <ul>
+        <li>See at a glance which teachers have submitted records and which haven't.</li>
+        <li>Export teacher records and SBA marks data directly from the portal.</li>
+        <li>Assign teachers to classes, and to attendance or levy-collection duties.</li>
+        <li>Revoke or reassign teacher access at any time — no need to involve the developer.</li>
+      </ul>
+    </div>
+
+    <div class="ledger-row">
+      <div class="who">Automatic Outputs</div>
+      <ul>
+        <li>Instant terminal report cards and mock exam report cards — no manual compilation.</li>
+        <li>SMS results delivery to parents for performance and mock exam results.</li>
+        <li>Custom meeting and notice SMS to staff and parents.</li>
+      </ul>
+    </div>
+
+    <div class="ledger-row">
+      <div class="who">Data Safety</div>
+      <ul>
+        <li>Automatic backup sync into the school's own Google account — nothing depends on one machine.</li>
+        <li>Lost, stolen, or crashed computer? Reinstall on a new machine and restore everything from backup.</li>
+        <li>Your data stays inside your own Google account — never shared with, or visible to, other schools.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="wrap">
+  <div class="price-band">
+    <div>
+      <h2>One-time purchase. No subscription. No expiry.</h2>
+      <p>Pay once and own it — no recurring fees, no yearly renewal, no feature paywall.</p>
+    </div>
+    <a class="btn btn-primary" href="#contact">Get pricing &amp; a demo</a>
+  </div>
+</section>
+
+<section id="faq" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">FREQUENTLY ASKED</span>
+    <h2>Questions schools ask before buying</h2>
+  </div>
+
+  <div class="faq-cols">
+    <p class="faq-group-title">Setup &amp; Access</p>
+    <details class="faq-item"><summary>Do I need internet to use the app?</summary><p>The desktop app works fully offline. Only the online portal (for teacher access), SMS sending, and backup sync need an internet connection.</p></details>
+    <details class="faq-item"><summary>Do teachers need to install anything?</summary><p>No — teachers use the online portal from any phone or computer browser with the PIN and link you give them. No software install required.</p></details>
+    <details class="faq-item"><summary>What if a teacher isn't comfortable using the portal?</summary><p>You can hand out an Excel template instead. They fill in marks manually and you import it — the same data flows into the system either way.</p></details>
+    <details class="faq-item"><summary>How many teachers or students can I add?</summary><p>No limit — add as many teachers and students as your school needs.</p></details>
+
+    <p class="faq-group-title">Cost</p>
+    <details class="faq-item"><summary>Is this a subscription?</summary><p>No. It's a one-time purchase with no recurring fees and no expiry date.</p></details>
+    <details class="faq-item"><summary>Are there any extra costs, like for SMS?</summary><p>[Fill in: state plainly whether SMS to parents/staff has a per-message cost, and roughly how much, so this is never a surprise later.]</p></details>
+    <details class="faq-item"><summary>Do I get free updates?</summary><p>[Fill in your actual update policy.]</p></details>
+
+    <p class="faq-group-title">Data Safety</p>
+    <details class="faq-item"><summary>What happens if the computer is lost, stolen, or crashes?</summary><p>Your data is backed up automatically to the school's own Google account. Reinstall the app on any new machine and restore everything from that backup.</p></details>
+    <details class="faq-item"><summary>Is our data shared with anyone, or with other schools?</summary><p>No. All data stays inside your school's own Google account at all times — it is never shared with or visible to any other school or third party.</p></details>
+    <details class="faq-item"><summary>Who can see our student records?</summary><p>Only staff the admin adds and grants access to. The admin controls every permission and can revoke access at any time.</p></details>
+
+    <p class="faq-group-title">Day-to-Day Use</p>
+    <details class="faq-item"><summary>How are report cards generated?</summary><p>Automatically, as soon as marks are entered — both terminal and mock exam report cards, with no manual compilation.</p></details>
+    <details class="faq-item"><summary>Can I customize subjects and grading?</summary><p>Yes — admins can rename or add subjects and adjust grading scales to match their school's own standard.</p></details>
+    <details class="faq-item"><summary>Can parents receive results directly?</summary><p>Yes, by SMS — performance and mock exam results can be sent straight to parents, along with custom meeting or notice messages.</p></details>
+    <details class="faq-item"><summary>Can I get my data out if I ever stop using the app?</summary><p>Yes — every record, including attendance, levies, and marks, can be exported to PDF or Excel at any time.</p></details>
+
+    <p class="faq-group-title">Support</p>
+    <details class="faq-item"><summary>What if something breaks or I don't understand a feature?</summary><p>[Fill in your actual support channel and response expectations — e.g. WhatsApp support during school hours.]</p></details>
+    <details class="faq-item"><summary>Is training provided when I buy?</summary><p>[Fill in whether onboarding/setup help is included.]</p></details>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">SEE IT WORKING</span>
+    <h2>Book a demo or reach the developer directly</h2>
+    <p>Watch a short walkthrough, or message on WhatsApp to see the system on your own school's data.</p>
+  </div>
+  <div class="contact">
+    <div>
+      <div class="video-frame">
+        <!-- Replace VIDEO_ID with your YouTube video ID -->
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="How Mmodemmo SBA Tracking System works" allowfullscreen></iframe>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:cosmopolitech.dev@gmail.com">✉ cosmopolitech.dev@gmail.com</a>
+        <a href="#">☎ [your phone number]</a>
+      </div>
+    </div>
+    <div class="qr-box">
+      <!-- Once you give me your WhatsApp number, this becomes a live scannable QR code -->
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=https://wa.me/YOURNUMBER" alt="Scan to chat on WhatsApp">
+      <div class="cap">Scan to chat on WhatsApp</div>
+      <a class="btn btn-primary" style="margin-top:14px; width:100%;" href="https://wa.me/YOURNUMBER">Message on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>© <span id="y"></span> Mmodemmo SBA Tracking System. All data stays inside your school's own Google account. <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
