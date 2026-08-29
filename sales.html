@@ -48,13 +48,14 @@
   /* ---------- Top bar ---------- */
   .topbar{
     display:flex; align-items:center; justify-content:space-between;
-    padding:18px 24px; max-width:1080px; margin:0 auto;
+    padding:18px 24px; max-width:1080px; margin:0 auto; flex-wrap:wrap; gap:12px;
   }
-  .brand{ display:flex; align-items:center; gap:10px; font-family:'Zilla Slab',serif; font-weight:700; font-size:1.25rem; color:var(--ink-deep); }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Zilla Slab',serif; font-weight:700; font-size:1.25rem; color:var(--ink-deep); text-decoration:none; }
   .brand .dot{ width:10px; height:10px; border-radius:50%; background:var(--mark); display:inline-block; }
   .topbar nav a{
     margin-left:22px; text-decoration:none; color:var(--text-soft); font-size:.92rem; font-weight:600;
   }
+  .topbar nav a:first-child{ margin-left:0; }
   .topbar nav a:hover{ color:var(--ink); }
 
   /* ---------- Hero ---------- */
@@ -158,13 +159,15 @@
 <body>
 
 <div class="topbar">
-  <div class="brand"><span class="dot"></span>Mmodemmo</div>
+  <a class="brand" href="index.html"><span class="dot"></span>Mmodemmo</a>
   <nav>
+    <a href="index.html">Home</a>
     <a href="#how">How it works</a>
     <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Demo &amp; Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
   </nav>
 </div>
 
