@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mmodemmo SBA Tracking System</title>
+<meta name="description" content="Mmodemmo SBA Tracking System — a desktop and online system for school attendance, levy collection, exam marks, and report cards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EAE0C4; --paper-soft:#F1E9D3; --ink:#1E3A5F; --ink-deep:#16283F; --chalk:#2F5233;
+    --text:#231F18; --text-soft:#4B4432; --line: rgba(35,31,24,0.14); --card:#F6F0DE;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--text); font-family:'Source Sans 3',sans-serif; line-height:1.62; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Zilla Slab',serif; color:var(--ink-deep); margin:0; }
+  a{ color:var(--ink); }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 24px; }
+
+  /* Nav */
+  .nav{ border-bottom:1px solid var(--line); background:var(--paper-soft); }
+  .nav-inner{ max-width:900px; margin:0 auto; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'Zilla Slab',serif; font-weight:700; font-size:1.15rem; color:var(--ink-deep); display:flex; align-items:center; gap:8px; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background:var(--chalk); display:inline-block; }
+  .nav a.pill{
+    font-size:.88rem; font-weight:600; text-decoration:none; color:var(--ink-deep);
+    border:1.5px solid var(--ink-deep); padding:7px 16px; border-radius:20px; transition:.15s ease;
+  }
+  .nav a.pill:hover{ background:var(--ink-deep); color:var(--paper); }
+
+  /* Hero */
+  .hero{ padding:56px 0 44px; }
+  .kicker{ font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.06em; color:var(--chalk); text-transform:uppercase; margin-bottom:14px; }
+  .hero h1{ font-size:clamp(1.9rem,4vw,2.6rem); line-height:1.12; margin-bottom:14px; max-width:20ch; }
+  .hero .lede{ font-size:1.08rem; color:var(--text-soft); max-width:60ch; }
+
+  /* Scope card */
+  .scope{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px 30px; margin:36px 0; }
+  .scope h2{ font-size:1.15rem; margin-bottom:14px; }
+  .scope p{ color:var(--text-soft); margin:0; }
+
+  /* Feature grid */
+  .section-label{ font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft); margin:44px 0 18px; border-top:1px solid var(--line); padding-top:34px; }
+  .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:20px; }
+  @media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
+  .feat{ background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; }
+  .feat h3{ font-size:.98rem; font-family:'Source Sans 3',sans-serif; font-weight:700; color:var(--text); margin-bottom:5px; }
+  .feat p{ font-size:.92rem; color:var(--text-soft); margin:0; }
+
+  /* Screenshots */
+  .shots{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:8px 0 10px; }
+  @media (max-width:640px){ .shots{ grid-template-columns:1fr; } }
+  .shot{ background:#fff; border:1px solid var(--line); border-radius:6px; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; color:var(--text-soft); font-family:'IBM Plex Mono',monospace; font-size:.76rem; text-align:center; padding:12px; overflow:hidden; }
+  .shot img{ width:100%; height:100%; object-fit:cover; }
+
+  /* Footer */
+  footer{ margin-top:54px; padding:26px 0 50px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer .small{ font-size:.86rem; color:var(--text-soft); }
+  footer .flinks a{ font-weight:600; text-decoration:none; margin-left:20px; font-size:.9rem; }
+  footer .flinks a:first-child{ margin-left:0; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>Mmodemmo</div>
+    <a class="pill" href="sales.html">Features &amp; pricing →</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">Desktop application &middot; Online teacher &amp; admin portal</div>
+    <h1>Student records, attendance, levies, and report cards — in one connected system.</h1>
+    <p class="lede">Mmodemmo SBA Tracking System is a desktop application that helps schools manage student records,
+    attendance, daily fee (levy) collection, and exam marks, with a connected online portal
+    that lets teachers and admins work from any browser.</p>
+  </header>
+
+  <div class="scope">
+    <h2>How your school's data is handled</h2>
+    <p>The application syncs data to a Google Sheet that the school owns and controls, and keeps
+    an encrypted backup copy in the school's own Google Drive. Nothing is shared with, or
+    visible to, any other school or third party. See the full
+    <a href="privacy.html">Privacy Policy</a> for details on the exact permissions requested.</p>
+  </div>
+
+  <div class="section-label">What it does</div>
+  <div class="grid">
+    <div class="feat"><h3>Attendance &amp; levies</h3><p>Recorded on desktop or through the online portal, by admin or assigned teachers.</p></div>
+    <div class="feat"><h3>SBA &amp; mock exam marks</h3><p>Entered once, feeding directly into automatic report cards.</p></div>
+    <div class="feat"><h3>Report cards</h3><p>Terminal and mock exam report cards generated automatically as marks come in.</p></div>
+    <div class="feat"><h3>BECE results analysis</h3><p>Import BECE result files and get chart-based analysis, exportable to Excel.</p></div>
+    <div class="feat"><h3>SMS notifications</h3><p>Results sent to parents, and custom notices to staff and parents.</p></div>
+    <div class="feat"><h3>Automatic backup</h3><p>The school database is backed up into the school's own Google account.</p></div>
+  </div>
+
+  <div class="section-label">Screenshots</div>
+  <!-- Replace these two placeholders with real screenshots (or <img> tags) -->
+  <div class="shots">
+    <div class="shot">Desktop app screenshot</div>
+    <div class="shot">Online portal screenshot</div>
+  </div>
+
+  <footer>
+    <div class="small">Contact: <a href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a></div>
+    <div class="flinks">
+      <a href="sales.html">Full features &amp; pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
