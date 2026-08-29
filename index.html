@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mmodemmo SBA Tracking System</title>
-<meta name="description" content="Mmodemmo SBA Tracking System — a desktop and online system for school attendance, levy collection, exam marks, and report cards.">
+<title>Mmodemmo SBA Tracking System | School Attendance, Levy & Report Card Platform</title>
+<meta name="description" content="Mmodemmo SBA Tracking System — a desktop and online system for school attendance, levy collection, SBA/exam marks, and report cards.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -21,9 +21,12 @@
 
   /* Nav */
   .nav{ border-bottom:1px solid var(--line); background:var(--paper-soft); }
-  .nav-inner{ max-width:900px; margin:0 auto; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; }
-  .brand{ font-family:'Zilla Slab',serif; font-weight:700; font-size:1.15rem; color:var(--ink-deep); display:flex; align-items:center; gap:8px; }
+  .nav-inner{ max-width:900px; margin:0 auto; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .brand{ font-family:'Zilla Slab',serif; font-weight:700; font-size:1.15rem; color:var(--ink-deep); display:flex; align-items:center; gap:8px; text-decoration:none; }
   .brand .dot{ width:9px; height:9px; border-radius:50%; background:var(--chalk); display:inline-block; }
+  .nav-links{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .nav-links a{ font-size:.92rem; font-weight:600; text-decoration:none; color:var(--text-soft); }
+  .nav-links a:hover{ color:var(--ink-deep); }
   .nav a.pill{
     font-size:.88rem; font-weight:600; text-decoration:none; color:var(--ink-deep);
     border:1.5px solid var(--ink-deep); padding:7px 16px; border-radius:20px; transition:.15s ease;
@@ -36,10 +39,14 @@
   .hero h1{ font-size:clamp(1.9rem,4vw,2.6rem); line-height:1.12; margin-bottom:14px; max-width:20ch; }
   .hero .lede{ font-size:1.08rem; color:var(--text-soft); max-width:60ch; }
 
-  /* Scope card */
-  .scope{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px 30px; margin:36px 0; }
-  .scope h2{ font-size:1.15rem; margin-bottom:14px; }
-  .scope p{ color:var(--text-soft); margin:0; }
+  /* Cards (scope / security / google) */
+  .info-card{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px 30px; margin:24px 0; }
+  .info-card h2{ font-size:1.15rem; margin-bottom:14px; }
+  .info-card p{ color:var(--text-soft); margin:0 0 10px; }
+  .info-card p:last-child{ margin-bottom:0; }
+  .info-card ul{ color:var(--text-soft); margin:0 0 10px; padding-left:1.2em; }
+  .info-card li{ margin-bottom:6px; }
+  .info-card .link-btn{ display:inline-block; margin-top:6px; font-weight:700; text-decoration:none; color:var(--ink-deep); border-bottom:2px solid var(--chalk); }
 
   /* Feature grid */
   .section-label{ font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft); margin:44px 0 18px; border-top:1px solid var(--line); padding-top:34px; }
@@ -49,11 +56,18 @@
   .feat h3{ font-size:.98rem; font-family:'Source Sans 3',sans-serif; font-weight:700; color:var(--text); margin-bottom:5px; }
   .feat p{ font-size:.92rem; color:var(--text-soft); margin:0; }
 
+  /* Who it's for */
+  .who-list{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+  .who-tag{ background:#fff; border:1px solid var(--line); border-radius:20px; padding:8px 16px; font-size:.9rem; font-weight:600; color:var(--ink-deep); }
+
   /* Screenshots */
   .shots{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:8px 0 10px; }
   @media (max-width:640px){ .shots{ grid-template-columns:1fr; } }
   .shot{ background:#fff; border:1px solid var(--line); border-radius:6px; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; color:var(--text-soft); font-family:'IBM Plex Mono',monospace; font-size:.76rem; text-align:center; padding:12px; overflow:hidden; }
   .shot img{ width:100%; height:100%; object-fit:cover; }
+
+  /* Support */
+  .support-email{ font-family:'IBM Plex Mono',monospace; font-size:.95rem; }
 
   /* Footer */
   footer{ margin-top:54px; padding:26px 0 50px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
@@ -66,8 +80,12 @@
 
 <div class="nav">
   <div class="nav-inner">
-    <div class="brand"><span class="dot"></span>Mmodemmo</div>
-    <a class="pill" href="sales.html">Features &amp; pricing →</a>
+    <a class="brand" href="index.html"><span class="dot"></span>Mmodemmo</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a class="pill" href="sales.html">Features &amp; pricing →</a>
+    </div>
   </div>
 </div>
 
@@ -80,7 +98,7 @@
     that lets teachers and admins work from any browser.</p>
   </header>
 
-  <div class="scope">
+  <div class="info-card">
     <h2>How your school's data is handled</h2>
     <p>The application syncs data to a Google Sheet that the school owns and controls, and keeps
     an encrypted backup copy in the school's own Google Drive. Nothing is shared with, or
@@ -98,6 +116,42 @@
     <div class="feat"><h3>Automatic backup</h3><p>The school database is backed up into the school's own Google account.</p></div>
   </div>
 
+  <div class="section-label">Who it's for</div>
+  <div class="who-list">
+    <span class="who-tag">School administrators</span>
+    <span class="who-tag">Teachers assigned by the admin</span>
+  </div>
+  <p style="color:var(--text-soft); max-width:70ch; margin:0 0 10px;">
+    Access is controlled entirely by the school. The administrator sets up the desktop application,
+    then issues each teacher a PIN and portal link for the specific classes and duties (attendance,
+    levies, or marks) they are assigned to. Access can be reassigned or revoked by the admin at any time.
+  </p>
+
+  <div class="section-label">Security &amp; privacy</div>
+  <div class="info-card">
+    <h2>Authentication &amp; access control</h2>
+    <p>The school administrator authenticates with their school's Google account so the desktop
+    application can sync data to that school's own Google Sheet and store a backup copy in that
+    school's own Google Drive. Teacher access to the online portal is separately controlled through
+    admin-issued PINs, not through Google sign-in.</p>
+    <p>We take reasonable technical and organizational measures to protect information against
+    unauthorized access, alteration, disclosure, or destruction. We do not claim the system is
+    unhackable or immune to all risk — no system is.</p>
+    <a class="link-btn" href="privacy.html">Read our Privacy Policy →</a>
+  </div>
+
+  <div class="info-card">
+    <h2>Google account access</h2>
+    <p>Mmodemmo requests only the Google permissions needed to sync and back up a school's own
+    records:</p>
+    <ul>
+      <li><b>Google Sheets</b> — to read and write the school's own student, teacher, attendance, and fee records.</li>
+      <li><b>Google Drive (app-created files only)</b> — to store an encrypted backup of the school's database in a folder the app creates inside that school's own Drive. Mmodemmo cannot see or access the rest of a school's Drive.</li>
+    </ul>
+    <p>Mmodemmo does not request access to Gmail, Calendar, Contacts, or any other Google service,
+    and does not use Google account data for advertising.</p>
+  </div>
+
   <div class="section-label">Screenshots</div>
   <!-- Replace these two placeholders with real screenshots (or <img> tags) -->
   <div class="shots">
@@ -105,13 +159,20 @@
     <div class="shot">Online portal screenshot</div>
   </div>
 
+  <div class="section-label">Support</div>
+  <p style="color:var(--text-soft); max-width:70ch; margin:0 0 10px;">
+    For questions about account access, privacy, or using the application, contact
+    <a class="support-email" href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a>.
+  </p>
+
   <footer>
-    <div class="small">Contact: <a href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a></div>
+    <div class="small">© <span id="y"></span> Mmodemmo SBA Tracking System &middot; Contact: <a href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a></div>
     <div class="flinks">
       <a href="sales.html">Full features &amp; pricing</a>
       <a href="privacy.html">Privacy Policy</a>
     </div>
   </footer>
 </div>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
