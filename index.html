@@ -33,7 +33,7 @@
   /* Nav */
   .nav{ position:sticky; top:0; z-index:40; background:rgba(31,61,46,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--board-line); }
 
-  .nav-inner{ max-width:920px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .nav-inner{ max-width:920px; margin:0 auto; padding:12px 24px 12px 12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
 
   /* Mmodemmo logo */
   .brand{
@@ -50,8 +50,8 @@
   }
 
   .brand img{
-    width:38px;
-    height:38px;
+    width:56px;
+    height:56px;
     object-fit:contain;
     display:block;
     flex-shrink:0;
@@ -84,12 +84,12 @@
     100%{ opacity:0; transform:translateY(-40px);}
   }
 
-  .hero-inner{ position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:0 24px; }
+  .hero-inner{ position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:0 24px; text-align:center; display:flex; flex-direction:column; align-items:center; }
   .hero .eyebrow{ color:#C9BE9B; opacity:0; animation:riseIn .7s ease forwards .1s; }
-  .app-fullname{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--gold); margin-top:10px; max-width:32ch; opacity:0; animation:riseIn .7s ease forwards .18s; }
-  .hero h1{ font-size:clamp(2.1rem,5vw,3.15rem); font-weight:700; color:var(--gold); line-height:1.08; margin:16px 0 18px; max-width:19ch; opacity:0; animation:riseIn .7s ease forwards .25s; }
-  .hero .lede{ font-size:1.08rem; color:#DCD6C2; max-width:56ch; opacity:0; animation:riseIn .7s ease forwards .4s; }
-  .hero-ctas{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; opacity:0; animation:riseIn .7s ease forwards .55s; }
+  .app-fullname{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--gold); margin:10px auto 0; max-width:32ch; opacity:0; animation:riseIn .7s ease forwards .18s; }
+  .hero h1{ font-size:clamp(2.1rem,5vw,3.15rem); font-weight:700; color:var(--gold); line-height:1.08; margin:16px auto 18px; max-width:19ch; opacity:0; animation:riseIn .7s ease forwards .25s; }
+  .hero .lede{ font-size:1.08rem; color:#DCD6C2; max-width:56ch; margin:0 auto; opacity:0; animation:riseIn .7s ease forwards .4s; }
+  .hero-ctas{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; justify-content:center; opacity:0; animation:riseIn .7s ease forwards .55s; }
 
   @keyframes riseIn{
     from{ opacity:0; transform:translateY(14px);}
@@ -98,7 +98,7 @@
 
   .btn{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:.94rem; text-decoration:none; padding:12px 22px; border-radius:3px; transition:transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease; }
   .btn-primary{ background:var(--stamp); color:#fff; }
-  .btn-primary:hover{ transform:translateY(-2px) scale(1.02); background:var(--stamp-deep); }
+  .btn-primary:hover{ transform:translateY(-2px) scale(1.02); background:var(--stamp-deep); color:var(--gold); }
   .btn-primary:active{ transform:scale(0.94) rotate(-1deg); }
   .btn-ghost{ border:1.5px solid rgba(243,239,227,0.4); color:var(--board-ink); background:transparent; }
   .btn-ghost:hover{ border-color:var(--board-ink); transform:translateY(-2px); background:var(--board-ink); color:var(--board); }
@@ -112,24 +112,6 @@
   }
 
   .hero-note{ margin-top:12px; font-size:.82rem; color:#B9C0AE; opacity:0; animation:riseIn .7s ease forwards .68s; }
-
-  /* Stamp signature element */
-  .stamp{ position:absolute; right:6%; top:64px; width:132px; height:132px; border:2.5px solid var(--stamp); border-radius:50%;
-    display:flex; align-items:center; justify-content:center; text-align:center; color:var(--stamp); font-family:'IBM Plex Mono',monospace;
-    font-size:.76rem; font-weight:600; letter-spacing:.03em; text-transform:uppercase; line-height:1.4; transform:rotate(-8deg) scale(2.2); opacity:0;
-    animation:stampDown .5s cubic-bezier(.2,1.4,.4,1) forwards 1s; mix-blend-mode:normal; }
-
-  .stamp::before{ content:''; position:absolute; inset:6px; border:1px solid var(--stamp); border-radius:50%; opacity:.5; }
-
-  @keyframes stampDown{
-    0%{ opacity:0; transform:rotate(-8deg) scale(2.6);}
-    60%{opacity:1;}
-    100%{ opacity:.9; transform:rotate(-8deg) scale(1);}
-  }
-
-  @media (max-width:720px){
-    .stamp{ display:none; }
-  }
 
   /* Reveal on scroll */
   .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
@@ -251,8 +233,6 @@
 
     <div class="hero-note">Free installer &middot; Windows 10/11 &middot; <a href="privacy.html" style="color:inherit; text-decoration:underline;">Privacy Policy</a></div>
   </div>
-
-  <div class="stamp">Secure&nbsp;Google<br>Data&nbsp;Sync</div>
 </header>
 
 <div class="wrap">
