@@ -9,51 +9,74 @@
   <link rel="canonical" href="/privacy.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
-    :root{--paper:#EAE0C4;--paper-soft:#F1E9D3;--ink:#1E3A5F;--ink-deep:#16283F;--chalk:#2F5233;--text:#231F18;--text-soft:#4B4432;--line:rgba(35,31,24,.15);--card:#F7F1DF}
+    :root{
+      --board:#1F3D2E; --board-ink:#F3EFE3; --board-line: rgba(243,239,227,0.16); --gold:#E4B75C;
+      --paper:#FBFAF5; --card:#FFFFFF; --ink:#16263A; --ink-soft:#4A5568;
+      --stamp:#A6362B; --stamp-deep:#7E281F; --line: rgba(22,38,58,0.12);
+    }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--paper);color:var(--text);font-family:'Source Sans 3',sans-serif;line-height:1.7}
-    a{color:var(--ink);text-underline-offset:3px}
-    a:focus-visible{outline:3px solid var(--chalk);outline-offset:3px}
-    h1,h2,h3{font-family:'Zilla Slab',serif;color:var(--ink-deep)}
-    h1{font-size:clamp(2.2rem,5vw,3.3rem);line-height:1.1;margin:12px 0 6px}
-    h2{font-size:1.55rem;margin:38px 0 9px}
-    h3{font-size:1.15rem;margin:23px 0 7px}
-    .nav{border-bottom:1px solid var(--line);background:var(--paper-soft)}
-    .nav-inner{max-width:900px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:18px}
-    .brand{font-family:'Zilla Slab',serif;font-weight:700;color:var(--ink-deep);text-decoration:none}
-    .brand span{color:var(--chalk)}
-    .wrap{max-width:800px;margin:auto;padding:58px 24px 70px}
-    .kicker{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:var(--chalk)}
-    .updated{color:var(--text-soft);font-size:.92rem;margin:0 0 30px}
-    .intro{font-size:1.05rem;color:var(--text-soft)}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:22px 24px;margin:25px 0}
-    ul{padding-left:1.25rem}
-    li{margin:8px 0;color:var(--text-soft)}
-    p{margin:8px 0;color:var(--text-soft)}
-    strong{color:var(--text)}
-    code{font-family:'IBM Plex Mono',monospace;font-size:.83em;overflow-wrap:anywhere}
-    .toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 0;margin:28px 0}
-    .toc a{margin-right:17px;font-size:.9rem}
-    footer{border-top:1px solid var(--line);margin-top:48px;padding-top:25px;color:var(--text-soft);font-size:.9rem}
-    .product-name{font-family:'Zilla Slab',serif;font-weight:700;color:var(--ink-deep);font-size:1.05rem;margin:0;letter-spacing:.01em}
-    .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:8px 14px;background:var(--card)}
-    .back-btn:hover{background:var(--paper-soft)}
-    @media(max-width:600px){.nav-inner{padding:14px 18px}.wrap{padding:43px 18px 55px}.back-btn{font-size:.8rem;padding:7px 12px}.card{padding:19px}}
+    body{margin:0;background:var(--paper);color:var(--ink-soft);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--stamp);text-underline-offset:3px}
+    a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+    h1,h2,h3{font-family:'Fraunces',serif;color:var(--ink);margin:0}
+    h1{font-size:clamp(2.1rem,5vw,3rem);line-height:1.1;font-weight:600;margin:12px 0 8px}
+    h2{font-size:1.45rem;font-weight:600;margin:42px 0 10px;padding-top:26px;border-top:1px solid var(--line);color:var(--board)}
+    h3{font-size:1.08rem;font-weight:600;margin:22px 0 7px;color:var(--stamp-deep)}
+
+    /* Nav — matches index.html */
+    .nav{ position:sticky; top:0; z-index:40; background:rgba(31,61,46,0.96); backdrop-filter:blur(6px); border-bottom:1px solid var(--board-line); }
+    .nav-inner{ max-width:900px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    .brand{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; color:var(--board-ink); display:flex; align-items:center; gap:9px; text-decoration:none; }
+    .brand .seal{ width:11px; height:11px; border-radius:50%; background:var(--stamp); display:inline-block; box-shadow:0 0 0 3px rgba(166,54,43,0.25); }
+    .nav-links{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+    .nav-links a{ font-size:.9rem; font-weight:500; text-decoration:none; color:var(--board-ink); opacity:.82; position:relative; padding-bottom:2px; transition:opacity .15s ease; }
+    .nav-links a.current{ opacity:1; }
+    .nav-links a.current::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--gold); }
+    .nav-links a:hover{ opacity:1; }
+    .nav a.pill{ font-size:.86rem; font-weight:600; text-decoration:none; color:var(--board); background:var(--board-ink); padding:8px 16px; border-radius:3px; transition:transform .15s ease, background .15s ease; opacity:1; }
+    .nav a.pill:hover{ transform:translateY(-2px); background:#fff; }
+
+    .wrap{max-width:760px;margin:auto;padding:56px 24px 80px}
+    .eyebrow{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.07em;font-size:.74rem;color:var(--stamp);font-weight:600}
+    .updated{color:var(--ink-soft);font-size:.9rem;margin:10px 0 26px}
+    .intro{font-size:1.05rem;color:var(--ink-soft);max-width:62ch}
+
+    .card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--stamp);border-radius:4px;padding:22px 24px;margin:20px 0;box-shadow:0 1px 2px rgba(22,38,58,0.03)}
+    .card p:first-child{margin-top:0}
+    .card p:last-child{margin-bottom:0}
+
+    ul{padding-left:1.25rem;margin:8px 0}
+    li{margin:8px 0;color:var(--ink-soft)}
+    p{margin:8px 0;color:var(--ink-soft)}
+    strong{color:var(--board)}
+    code{font-family:'IBM Plex Mono',monospace;font-size:.83em;overflow-wrap:anywhere;background:rgba(166,54,43,0.08);color:var(--stamp-deep);padding:2px 5px;border-radius:3px}
+
+    .toc{display:flex;flex-wrap:wrap;gap:8px 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:30px 0}
+    .toc a{font-size:.85rem;font-weight:600;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 13px;transition:transform .15s ease,border-color .15s ease}
+    .toc a:hover{transform:translateY(-2px);border-color:var(--stamp)}
+
+    footer{border-top:1px solid var(--line);margin-top:52px;padding-top:24px;color:var(--ink-soft);font-size:.9rem;display:flex;flex-wrap:wrap;gap:6px 18px}
+    footer a{font-weight:600;text-decoration:none}
+
+    @media(max-width:600px){.wrap{padding:40px 18px 60px}.card{padding:18px}}
   </style>
 </head>
 <body>
-  <nav class="nav" aria-label="Primary navigation">
+  <div class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html">Mmodemmo SBA Tracking System Portal</a>
-      <a class="back-btn" href="index.html">← Back to Home</a>
+      <a class="brand" href="index.html"><span class="seal"></span>Mmodemmo SBA Tracking System</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html" class="current">Privacy Policy</a>
+        <a class="pill" href="sales.html">Features &amp; pricing →</a>
+      </div>
     </div>
-  </nav>
+  </div>
 
   <main class="wrap">
-    <div class="kicker">Privacy &amp; data practices</div>
-    <!-- <p class="product-name">Mmodemmo SBA Tracking System</p> -->
+    <div class="eyebrow">Privacy &amp; data practices</div>
     <h1>Privacy Policy</h1>
     <p class="updated"><strong>Effective date:</strong> August 29, 2026</p>
 
@@ -222,7 +245,7 @@
     </div>
 
     <footer>
-      <a href="index.html">Mmodemmo SBA School Portal</a> ·
+      <a href="index.html">Mmodemmo SBA School Portal</a>
       <a href="sales.html">Features &amp; Pricing</a>
     </footer>
   </main>
