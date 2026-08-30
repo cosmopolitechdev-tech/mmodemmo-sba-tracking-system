@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --board:#1F3D2E; --board-ink:#F3EFE3; --board-line: rgba(243,239,227,0.16); --gold:#E4B75C;
@@ -15,6 +16,7 @@
     --stamp:#A6362B; --stamp-deep:#7E281F; --line: rgba(22,38,58,0.12);
     --card-ink:#F3EFE3; --card-ink-soft:#C9BE9B; --card-line: rgba(243,239,227,0.18);
   }
+
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.62; -webkit-font-smoothing:antialiased; }
@@ -30,39 +32,33 @@
 
   /* Nav */
   .nav{ position:sticky; top:0; z-index:40; background:rgba(31,61,46,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--board-line); }
+
   .nav-inner{ max-width:920px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-  /* .brand{ font-family:'Fraunces',serif; font-weight:700; font-size:1.22rem; letter-spacing:.01em; color:var(--gold); display:flex; align-items:center; gap:9px; text-decoration:none; transition:color .15s ease; } */
-  /* .brand:hover{ color:#fff; } */
-  /* .brand .seal{ width:11px; height:11px; border-radius:50%; background:var(--stamp); display:inline-block; box-shadow:0 0 0 3px rgba(166,54,43,0.25); } */
-  /* .brand img{
-  width:38px;
-  height:38px;
-  object-fit:contain;
-  display:block;
-} */
+
+  /* Mmodemmo logo */
   .brand{
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  font-size:1.22rem;
-  letter-spacing:.01em;
-  color:var(--gold);
-  display:flex;
-  align-items:center;
-  gap:9px;
-  text-decoration:none;
-  transition:color .15s ease;
-}
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.22rem;
+    letter-spacing:.01em;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:9px;
+    text-decoration:none;
+    transition:color .15s ease;
+  }
 
-.brand img{
-  width:38px;
-  height:38px;
-  object-fit:contain;
-  display:block;
-}
+  .brand img{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+    display:block;
+    flex-shrink:0;
+  }
 
-.brand:hover{
-  color:#fff;
-}
+  .brand:hover{ color:#fff; }
+
   .nav-links{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
   .nav-links a{ font-size:.9rem; font-weight:500; text-decoration:none; color:var(--board-ink); opacity:.82; position:relative; padding:6px 10px; margin:-6px -10px; border-radius:4px; transition:opacity .15s ease, background .15s ease, color .15s ease; }
   .nav-links a::after{ content:''; position:absolute; left:10px; right:calc(100% - 10px); bottom:2px; height:1px; background:var(--stamp); transition:right .2s ease; }
@@ -77,16 +73,28 @@
       radial-gradient(circle at 12% 18%, rgba(255,255,255,0.05), transparent 40%),
       linear-gradient(180deg,#1F3D2E 0%, #1B3527 100%);
     color:var(--board-ink); padding:78px 0 96px; position:relative; overflow:hidden; }
+
   .chalk-dust{ position:absolute; inset:0; pointer-events:none; }
   .chalk-dust span{ position:absolute; width:3px; height:3px; background:var(--board-ink); border-radius:50%; opacity:0; animation:drift 7s ease-in-out infinite; }
-  @keyframes drift{ 0%{ opacity:0; transform:translateY(0);} 15%{opacity:.35;} 85%{opacity:.2;} 100%{ opacity:0; transform:translateY(-40px);} }
+
+  @keyframes drift{
+    0%{ opacity:0; transform:translateY(0);}
+    15%{opacity:.35;}
+    85%{opacity:.2;}
+    100%{ opacity:0; transform:translateY(-40px);}
+  }
+
   .hero-inner{ position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:0 24px; }
   .hero .eyebrow{ color:#C9BE9B; opacity:0; animation:riseIn .7s ease forwards .1s; }
   .app-fullname{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--gold); margin-top:10px; max-width:32ch; opacity:0; animation:riseIn .7s ease forwards .18s; }
   .hero h1{ font-size:clamp(2.1rem,5vw,3.15rem); font-weight:700; color:var(--gold); line-height:1.08; margin:16px 0 18px; max-width:19ch; opacity:0; animation:riseIn .7s ease forwards .25s; }
   .hero .lede{ font-size:1.08rem; color:#DCD6C2; max-width:56ch; opacity:0; animation:riseIn .7s ease forwards .4s; }
   .hero-ctas{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; opacity:0; animation:riseIn .7s ease forwards .55s; }
-  @keyframes riseIn{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(14px);}
+    to{ opacity:1; transform:translateY(0);}
+  }
 
   .btn{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:.94rem; text-decoration:none; padding:12px 22px; border-radius:3px; transition:transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease; }
   .btn-primary{ background:var(--stamp); color:#fff; }
@@ -97,7 +105,12 @@
 
   .btn-download{ position:relative; }
   .btn-download::after{ content:''; position:absolute; inset:-4px; border:1.5px solid var(--stamp); border-radius:5px; opacity:0; animation:pulseRing 2.2s ease-out infinite 1.6s; }
-  @keyframes pulseRing{ 0%{ opacity:.55; transform:scale(1);} 100%{ opacity:0; transform:scale(1.18);} }
+
+  @keyframes pulseRing{
+    0%{ opacity:.55; transform:scale(1);}
+    100%{ opacity:0; transform:scale(1.18);}
+  }
+
   .hero-note{ margin-top:12px; font-size:.82rem; color:#B9C0AE; opacity:0; animation:riseIn .7s ease forwards .68s; }
 
   /* Stamp signature element */
@@ -105,9 +118,18 @@
     display:flex; align-items:center; justify-content:center; text-align:center; color:var(--stamp); font-family:'IBM Plex Mono',monospace;
     font-size:.76rem; font-weight:600; letter-spacing:.03em; text-transform:uppercase; line-height:1.4; transform:rotate(-8deg) scale(2.2); opacity:0;
     animation:stampDown .5s cubic-bezier(.2,1.4,.4,1) forwards 1s; mix-blend-mode:normal; }
+
   .stamp::before{ content:''; position:absolute; inset:6px; border:1px solid var(--stamp); border-radius:50%; opacity:.5; }
-  @keyframes stampDown{ 0%{ opacity:0; transform:rotate(-8deg) scale(2.6);} 60%{opacity:1;} 100%{ opacity:.9; transform:rotate(-8deg) scale(1);} }
-  @media (max-width:720px){ .stamp{ display:none; } }
+
+  @keyframes stampDown{
+    0%{ opacity:0; transform:rotate(-8deg) scale(2.6);}
+    60%{opacity:1;}
+    100%{ opacity:.9; transform:rotate(-8deg) scale(1);}
+  }
+
+  @media (max-width:720px){
+    .stamp{ display:none; }
+  }
 
   /* Reveal on scroll */
   .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
@@ -133,6 +155,7 @@
   /* Feature grid — hover pop */
   .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:8px; }
   @media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
+
   .feat{ background:var(--card); border:1px solid var(--card-line); border-radius:5px; padding:20px 22px; transition:transform .22s cubic-bezier(.2,.9,.3,1.3), box-shadow .22s ease, border-color .22s ease; }
   .feat:hover{ transform:translateY(-6px) rotate(-0.4deg); box-shadow:0 14px 26px -14px rgba(22,38,58,0.28); border-color:rgba(166,54,43,0.35); }
   .feat h3{ font-size:.98rem; font-family:'Inter',sans-serif; font-weight:700; color:var(--card-ink); margin-bottom:5px; }
@@ -184,39 +207,51 @@
   .cta-banner{ margin-top:10px; }
   .cta-card{ background:var(--board); color:var(--board-ink); border-radius:6px; padding:34px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
   .cta-card h2{ color:var(--board-ink); }
-  @media (max-width:640px){ .cta-card{ flex-direction:column; align-items:flex-start; } }
+
+  @media (max-width:640px){
+    .cta-card{ flex-direction:column; align-items:flex-start; }
+  }
 </style>
 </head>
+
 <body>
 
 <div class="nav">
   <div class="nav-inner">
-    <!-- <a class="brand" href="index.html"><span class="seal"></span>Mmodemmo</a> -->
+
     <a class="brand" href="index.html">
-      <img src="images/mmodemmo-logo.png" alt="Mmodemmo Logo">
-      <!-- <span>Mmodemmo</span> -->
+      <img src="./images/mmodemmo-logo.png" alt="Mmodemmo Logo">
     </a>
+
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a class="pill" href="sales.html">Features &amp; pricing →</a>
     </div>
+
   </div>
 </div>
 
 <header class="hero">
   <div class="chalk-dust" id="chalkDust"></div>
+
   <div class="hero-inner">
     <div class="eyebrow">Desktop application &middot; Online teacher &amp; admin portal</div>
+
     <div class="app-fullname">Mmodemmo SBA Tracking System for Ghanaian Basic School</div>
+
     <h1>Every mark, register, and levy — recorded once, in one connected system.</h1>
+
     <p class="lede">Mmodemmo SBA Tracking System is a desktop application that helps schools manage school-based assessment, student records, attendance, levy collection, and SMS updates to parents — with a connected online portal teachers and admins can reach from any browser.</p>
+
     <div class="hero-ctas">
       <a class="btn btn-primary btn-download" href="https://github.com/cosmopolitechdev-tech/mmodemmo-sba-tracking-system/releases/latest/download/MmodemmoSBASetup.exe" download>⬇ Download for Windows</a>
       <a class="btn btn-ghost" href="sales.html">See features &amp; pricing</a>
     </div>
+
     <div class="hero-note">Free installer &middot; Windows 10/11 &middot; <a href="privacy.html" style="color:inherit; text-decoration:underline;">Privacy Policy</a></div>
   </div>
+
   <div class="stamp">Secure&nbsp;Google<br>Data&nbsp;Sync</div>
 </header>
 
@@ -224,6 +259,7 @@
 
   <div class="section reveal" style="padding-top:50px;">
     <div class="section-label"><span class="num">01</span><span class="eyebrow">What it does</span></div>
+
     <div class="grid">
       <div class="feat"><span class="dot"></span><h3>SBA &amp; Mock Exam Marks</h3><p>Entered once, feeding directly into automatic report cards.</p></div>
       <div class="feat"><span class="dot"></span><h3>Automatic Report Card Generation</h3><p>Terminal and mock exam report cards generated automatically as marks come in.</p></div>
@@ -235,19 +271,24 @@
   </div>
 
   <hr class="rule">
+
   <div class="section reveal">
     <div class="section-label"><span class="num">02</span><span class="eyebrow">Who it's for</span></div>
+
     <div class="who-list">
       <span class="who-tag">School administrators</span>
     </div>
+
     <p style="color:var(--ink-soft); max-width:70ch; margin:14px 0 10px;">
       Access is controlled entirely by the school. The administrator sets up the desktop application, then issues each teacher a PIN and portal link for the specific classes and duties (attendance, levies, or marks) they are assigned to. Access can be reassigned or revoked by the admin at any time.
     </p>
   </div>
 
   <hr class="rule">
+
   <div class="section reveal">
     <div class="section-label"><span class="num">03</span><span class="eyebrow">Screenshots</span></div>
+
     <!-- Replace these two placeholders with real screenshots (or <img> tags) -->
     <div class="shots">
       <div class="shot">Desktop app screenshot</div>
@@ -256,8 +297,10 @@
   </div>
 
   <hr class="rule">
+
   <div class="section reveal">
     <div class="section-label"><span class="num">04</span><span class="eyebrow">Testimonials</span></div>
+
     <!-- Placeholder quotes — replace with real feedback from schools before publishing -->
     <div class="testi-grid">
       <div class="testi">
@@ -265,6 +308,7 @@
         <p>"[Add a quote here about how Mmodemmo has helped your school's record-keeping.]"</p>
         <div class="who">[Name]<span>[Role, School name]</span></div>
       </div>
+
       <div class="testi">
         <div class="stars">★★★★★</div>
         <p>"[Add a quote here about report cards or levy tracking becoming easier.]"</p>
@@ -274,8 +318,10 @@
   </div>
 
   <hr class="rule">
+
   <div class="section reveal">
     <div class="section-label"><span class="num">05</span><span class="eyebrow">Trust &amp; privacy</span></div>
+
     <div class="info-card">
       <h2>How your school's data is handled</h2>
       <p>The application syncs data to a Google Sheet that the school owns and controls, and keeps an encrypted backup copy in the school's own Google Drive. Nothing is shared with, or visible to, any other school or third party. See the full
@@ -285,51 +331,66 @@
     <div class="info-card">
       <h2>Authentication &amp; access control</h2>
       <p>The school administrator authenticates with their school's Google account so the desktop application can sync data to that school's own Google Sheet and store a backup copy in that school's own Google Drive. Teacher access to the online portal is separately controlled through admin-issued PINs, not through Google sign-in.</p>
+
       <p>We take reasonable technical and organizational measures to protect information against unauthorized access, alteration, disclosure, or destruction. We do not claim the system is unhackable or immune to all risk — no system is.</p>
+
       <a class="link-btn" href="privacy.html">Read our Privacy Policy →</a>
     </div>
 
     <div class="info-card">
       <h2>Google account access</h2>
+
       <p>Mmodemmo requests only the Google permissions needed to sync and back up a school's own records:</p>
+
       <ul>
         <li><b>Google Sheets</b> — to read and write the school's own student, teacher, attendance, and fee records.</li>
         <li><b>Google Drive (app-created files only)</b> — to store an encrypted backup of the school's database in a folder the app creates inside that school's own Drive. Mmodemmo cannot see or access the rest of a school's Drive.</li>
       </ul>
+
       <p>Mmodemmo does not request access to Gmail, Calendar, Contacts, or any other Google service, and does not use Google account data for advertising.</p>
     </div>
   </div>
 
   <hr class="rule">
+
   <div class="section reveal">
     <div class="section-label"><span class="num">06</span><span class="eyebrow">FAQs</span></div>
+
     <div class="faq">
+
       <details class="faq-item">
         <summary>Does my school need internet to use the desktop app?</summary>
         <p>No — the desktop app works offline for day-to-day use. It syncs to your school's Google Sheet and Drive backup whenever you're connected.</p>
       </details>
+
       <details class="faq-item">
         <summary>Can Mmodemmo see files elsewhere in our Google Drive?</summary>
         <p>No. It only accesses the Sheet you connect and a folder it creates itself in your Drive for backups — nothing else in your account.</p>
       </details>
+
       <details class="faq-item">
         <summary>How do teachers get access without a Google sign-in?</summary>
         <p>The admin issues each teacher a PIN and a portal link scoped to their classes and duties. Access can be changed or revoked at any time.</p>
       </details>
+
       <details class="faq-item">
         <summary>What happens if a school computer is lost or damaged?</summary>
         <p>Your database is backed up automatically to your school's own Google Drive, so records aren't tied to a single machine.</p>
       </details>
+
       <details class="faq-item">
         <summary>What does it cost?</summary>
         <p>See <a href="sales.html">full features &amp; pricing</a> for current plans.</p>
       </details>
+
     </div>
   </div>
 
   <hr class="rule">
+
   <div class="section reveal">
     <div class="section-label"><span class="num">07</span><span class="eyebrow">Support</span></div>
+
     <p style="color:var(--ink-soft); max-width:70ch; margin:0 0 10px;">
       For questions about account access, privacy, or using the application, contact
       <a class="support-email" href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a>.
@@ -338,21 +399,31 @@
 
   <div class="section reveal cta-banner">
     <div class="cta-card">
+
       <div>
         <div class="eyebrow" style="color:var(--stamp);">Ready when you are</div>
         <h2 style="font-size:1.4rem; margin-top:6px;">Download the installer and set up your school in minutes.</h2>
       </div>
+
       <a class="btn btn-primary btn-download" href="https://github.com/cosmopolitechdev-tech/mmodemmo-sba-tracking-system/releases/latest/download/MmodemmoSBASetup.exe" download>⬇ Download for Windows</a>
+
     </div>
   </div>
 
   <footer>
-    <div class="small">© <span id="y"></span> Mmodemmo SBA Tracking System &middot; Contact: <a href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a></div>
+
+    <div class="small">
+      © <span id="y"></span> Mmodemmo SBA Tracking System &middot;
+      Contact: <a href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a>
+    </div>
+
     <div class="flinks">
       <a href="sales.html">Full features &amp; pricing</a>
       <a href="privacy.html">Privacy Policy</a>
     </div>
+
   </footer>
+
 </div>
 
 <script>
@@ -360,20 +431,31 @@
 
   // Scroll-triggered reveal
   var reveals = document.querySelectorAll('.reveal');
+
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
       });
     }, { threshold:0.12 });
-    reveals.forEach(function(el){ io.observe(el); });
+
+    reveals.forEach(function(el){
+      io.observe(el);
+    });
+
   } else {
-    reveals.forEach(function(el){ el.classList.add('in'); });
+    reveals.forEach(function(el){
+      el.classList.add('in');
+    });
   }
 
   // Ambient chalk dust in hero
   var dustHost = document.getElementById('chalkDust');
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   if(dustHost && !prefersReduced){
     for(var i=0;i<16;i++){
       var s = document.createElement('span');
@@ -385,5 +467,6 @@
     }
   }
 </script>
+
 </body>
 </html>
