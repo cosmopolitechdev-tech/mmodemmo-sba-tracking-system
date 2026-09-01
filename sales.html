@@ -230,6 +230,24 @@
       }
       footer .flinks a:first-child { margin-left: 0; }
       footer .flinks a:hover { background: var(--stamp); color: #fff; }
+
+      /* Scroll-to-top / scroll-to-bottom */
+      .scroll-nav {
+        position: fixed; right: 20px; bottom: 24px; z-index: 50;
+        display: flex; flex-direction: column; gap: 10px;
+      }
+      .scroll-nav button {
+        width: 42px; height: 42px; border-radius: 50%; border: none; cursor: pointer;
+        background: var(--board); color: var(--board-ink); font-size: 1.1rem; line-height: 1;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); opacity: 0.9;
+        transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+      }
+      .scroll-nav button:hover { transform: translateY(-2px); background: var(--stamp); opacity: 1; }
+      @media (max-width: 640px) {
+        .scroll-nav { right: 14px; bottom: 16px; gap: 8px; }
+        .scroll-nav button { width: 38px; height: 38px; font-size: 1rem; }
+      }
     </style>
   </head>
 
@@ -458,8 +476,30 @@
       </footer>
     </div>
 
+    <div class="scroll-nav" aria-label="Page navigation">
+      <button type="button" id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top">↑</button>
+      <button type="button" id="scrollBottomBtn" aria-label="Scroll to bottom" title="Scroll to bottom">↓</button>
+    </div>
+
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Scroll-to-top / scroll-to-bottom
+      var scrollTopBtn = document.getElementById("scrollTopBtn");
+      var scrollBottomBtn = document.getElementById("scrollBottomBtn");
+      if (scrollTopBtn) {
+        scrollTopBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+      if (scrollBottomBtn) {
+        scrollBottomBtn.addEventListener("click", function () {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth",
+          });
+        });
+      }
 
       var reveals = document.querySelectorAll(".reveal");
       if ("IntersectionObserver" in window) {
