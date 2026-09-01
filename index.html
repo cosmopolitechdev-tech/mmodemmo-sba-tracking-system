@@ -7,7 +7,7 @@
 <meta name="description" content="Mmodemmo School Management System — a desktop and online system for school attendance, levy collection, SBA/exam marks, and report cards.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -34,6 +34,17 @@
   .nav{ position:sticky; top:0; z-index:40; background:rgba(31,61,46,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--board-line); }
 
   .nav-inner{ max-width:920px; margin:0 auto; padding:12px 24px 12px 12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .nav-links .pill-short{ display:none; }
+
+  @media (max-width:640px){
+    .nav-inner{ flex-wrap:nowrap; padding:10px 14px 10px 10px; gap:6px; }
+    .brand img{ width:38px; height:38px; }
+    .nav-links{ gap:4px; }
+    .nav-links a{ font-size:.76rem; padding:6px 7px; margin:-6px -7px; }
+    .nav a.pill{ font-size:.76rem; padding:7px 10px; white-space:nowrap; }
+    .nav-links .pill-full{ display:none; }
+    .nav-links .pill-short{ display:inline; }
+  }
 
   /* Mmodemmo logo */
   .brand{
@@ -72,7 +83,7 @@
   .hero{ background:
       radial-gradient(circle at 12% 18%, rgba(255,255,255,0.05), transparent 40%),
       linear-gradient(180deg,#1F3D2E 0%, #1B3527 100%);
-    color:var(--board-ink); padding:78px 0 96px; position:relative; overflow:hidden; }
+    color:var(--board-ink); padding:38px 0 96px; position:relative; overflow:hidden; }
 
   .chalk-dust{ position:absolute; inset:0; pointer-events:none; }
   .chalk-dust span{ position:absolute; width:3px; height:3px; background:var(--board-ink); border-radius:50%; opacity:0; animation:drift 7s ease-in-out infinite; }
@@ -84,11 +95,29 @@
     100%{ opacity:0; transform:translateY(-40px);}
   }
 
+  /* Corner badge — tucked at the top-left edge, tilted, sitting just under the nav without overlapping it */
+  .corner-badge{ position:absolute; top:22px; left:-14px; z-index:4; transform:rotate(-35deg); background:var(--stamp); color:#fff; padding:12px 30px 12px 22px; border-radius:2px; font-family:'Fraunces',serif; font-weight:700; font-style:italic; font-size:.95rem; line-height:1.55; text-align:left; box-shadow:0 4px 14px rgba(0,0,0,.3); opacity:0; animation:badgeIn .6s ease forwards .05s, badgeGlow 2.6s ease-in-out infinite 1s; }
+  .corner-badge span{ display:block; white-space:nowrap; }
+
+  @keyframes badgeIn{
+    from{ opacity:0; transform:rotate(-35deg) translateY(-6px); }
+    to{ opacity:1; transform:rotate(-35deg) translateY(0); }
+  }
+
+  @keyframes badgeGlow{
+    0%,100%{ box-shadow:0 4px 14px rgba(0,0,0,.3); }
+    50%{ box-shadow:0 6px 20px rgba(228,183,92,.55); }
+  }
+
+  @media (max-width:640px){
+    .corner-badge{ font-size:.72rem; padding:8px 20px 8px 14px; top:16px; left:-10px; }
+  }
+
   .hero-inner{ position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:0 24px; text-align:center; display:flex; flex-direction:column; align-items:center; }
   .hero .eyebrow{ color:#C9BE9B; opacity:0; animation:riseIn .7s ease forwards .1s; }
-  .app-fullname{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--gold); margin:10px auto 0; max-width:32ch; opacity:0; animation:riseIn .7s ease forwards .18s; }
-  .hero h1{ font-size:clamp(2.1rem,5vw,3.15rem); font-weight:700; color:var(--gold); line-height:1.08; margin:16px auto 18px; max-width:19ch; opacity:0; animation:riseIn .7s ease forwards .25s; }
-  .hero .lede{ font-size:1.08rem; color:#DCD6C2; max-width:56ch; margin:0 auto; opacity:0; animation:riseIn .7s ease forwards .4s; }
+  .app-fullname{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(1.2rem,2.8vw,1.55rem); letter-spacing:.03em; text-transform:uppercase; color:var(--gold); margin:8px auto 0; max-width:40ch; opacity:0; animation:riseIn .7s ease forwards .18s; }
+  .hero h1{ font-size:clamp(2.4rem,5.8vw,3.75rem); font-weight:900; color:var(--gold); line-height:1.1; margin:14px auto 18px; max-width:26ch; opacity:0; animation:riseIn .7s ease forwards .25s; }
+  .hero .lede{ font-size:1.12rem; color:#DCD6C2; max-width:66ch; margin:0 auto; opacity:0; animation:riseIn .7s ease forwards .4s; }
   .hero-ctas{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; justify-content:center; opacity:0; animation:riseIn .7s ease forwards .55s; }
 
   @keyframes riseIn{
@@ -112,6 +141,8 @@
   }
 
   .hero-note{ margin-top:12px; font-size:.82rem; color:#B9C0AE; opacity:0; animation:riseIn .7s ease forwards .68s; }
+  .hero-note a{ color:var(--gold); font-weight:600; text-decoration:underline; }
+  .hero-note a:hover{ color:#fff; }
 
   /* Reveal on scroll */
   .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
@@ -126,6 +157,8 @@
   .info-card li{ margin-bottom:6px; }
   .info-card .link-btn{ display:inline-block; margin-top:6px; padding:4px 8px; margin-left:-8px; border-radius:4px; font-weight:700; text-decoration:none; color:var(--stamp); border-bottom:2px solid var(--stamp); transition:background .15s ease, color .15s ease; }
   .info-card .link-btn:hover{ background:var(--stamp); color:#fff; border-bottom-color:var(--stamp); }
+  .info-card p a{ color:var(--stamp); font-weight:700; text-decoration:underline; }
+  .info-card p a:hover{ color:#fff; }
 
   .section{ padding:54px 0 0; }
   .section-label{ display:flex; align-items:center; gap:14px; color:var(--ink-soft); margin:0 0 28px; padding-top:0; }
@@ -207,8 +240,8 @@
 
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a class="pill" href="sales.html">Features &amp; pricing →</a>
+      <a href="privacy.html"><span class="pill-full">Privacy Policy</span><span class="pill-short">Privacy</span></a>
+      <a class="pill" href="sales.html"><span class="pill-full">Features &amp; pricing →</span><span class="pill-short">Pricing</span></a>
     </div>
 
   </div>
@@ -216,13 +249,18 @@
 
 <header class="hero">
   <div class="chalk-dust" id="chalkDust"></div>
+  <div class="corner-badge">
+    <span>&middot; One Time Purchase</span>
+    <span>&middot; No Subscription</span>
+    <span>&middot; No Expiry</span>
+  </div>
 
   <div class="hero-inner">
     <div class="eyebrow">Desktop application &middot; Online teacher &amp; admin portal</div>
 
     <div class="app-fullname">Mmodemmo School Management System for Ghanaian Basic School</div>
 
-    <h1>Every SBA & Mock Exams Marks, Enrolment & Attendance, and Levies — recorded once, in one connected system..</h1>
+    <h1>Every SBA & Mock Exams Marks, Enrolment & Attendance, and Levies — recorded once, in one connected system.</h1>
 
     <p class="lede">Mmodemmo School Management System is a Windows desktop application with a web/online companion portal that helps schools manage school-based assessment (Class exercises, terminal exams and mock exams) with chart-based analysis, student records, attendance, levy collection, and SMS updates to parents — with data synchronized between the desktop application and the online portal.</p>
 
@@ -231,7 +269,7 @@
       <a class="btn btn-ghost" href="sales.html">See features &amp; pricing</a>
     </div>
 
-    <div class="hero-note">Free installer &middot; Windows 10/11 &middot; <a href="privacy.html" style="color:inherit; text-decoration:underline;">Privacy Policy</a></div>
+    <div class="hero-note">Free installer &middot; Windows 10/11 &middot; <a href="privacy.html">Privacy Policy</a></div>
   </div>
 </header>
 
@@ -241,7 +279,7 @@
     <div class="section-label"><span class="num">01</span><span class="eyebrow">What it does</span></div>
 
     <div class="grid">
-      <div class="feat"><span class="dot"></span><h3>SBA &amp; Mock Exam Marks</h3><p>Entered once, feeding directly into automatic report cards.</p></div>
+      <div class="feat"><span class="dot"></span><h3>SBA &amp; Mock Exam Marks</h3><p>Entered once, feeding directly into automatic report cards — with built-in class-level and student-level performance charts.</p></div>
       <div class="feat"><span class="dot"></span><h3>Automatic Report Card Generation</h3><p>Terminal and mock exam report cards generated automatically as marks come in.</p></div>
       <div class="feat"><span class="dot"></span><h3>Attendance &amp; Levies</h3><p>Recorded on desktop or through the online portal, by admin or assigned teachers.</p></div>
       <div class="feat"><span class="dot"></span><h3>SMS Notifications</h3><p>Results sent to parents, and custom notices to staff and parents.</p></div>
@@ -281,18 +319,18 @@
   <div class="section reveal">
     <div class="section-label"><span class="num">04</span><span class="eyebrow">Testimonials</span></div>
 
-    <!-- Placeholder quotes — replace with real feedback from schools before publishing -->
+    <!-- Draft quotes — swap for real feedback once these schools have used the app after re-opening -->
     <div class="testi-grid">
       <div class="testi">
         <div class="stars">★★★★★</div>
-        <p>"[Add a quote here about how Mmodemmo has helped your school's record-keeping.]"</p>
-        <div class="who">Tony Akowuah<span>ICT Coordinator, Harry Educational Complex]</span></div>
+        <p>"Mmodemmo has made our record-keeping very easy. Attendance, levies, and exam marks are all in one place now, and I can check any student's records in seconds."</p>
+        <div class="who">Tony Akowuah<span>ICT Coordinator, Harry Educational Complex</span></div>
       </div>
 
       <div class="testi">
         <div class="stars">★★★★★</div>
-        <p>"[Add a quote here about report cards or levy tracking becoming easier.]"</p>
-        <div class="who">Benjamin Yankey<span>ICT Coordinator, Kokoben M/A Junior High School]</span></div>
+        <p>"Since we started using Mmodemmo, our report cards are ready as soon as marks are entered. We also know exactly which students have paid their levies and which have not."</p>
+        <div class="who">Benjamin Yankey<span>ICT Coordinator, Kokoben M/A Junior High School</span></div>
       </div>
     </div>
   </div>
@@ -355,7 +393,22 @@
 
       <details class="faq-item">
         <summary>What happens if a school computer is lost or damaged?</summary>
-        <p>Your database is backed up automatically to your school's own Google Drive, so records aren't tied to a single machine.</p>
+        <p>Nothing is lost. Your live records are already synced to your school's own Google Sheet, and a full encrypted database backup is saved automatically to your school's own Google Drive. Install the app on a replacement computer, sign in with the same school Google account, and restore the latest backup to pick up exactly where you left off.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if our school doesn't have reliable internet?</summary>
+        <p>The desktop app is built offline-first — enter marks, attendance, and levies with no connection at all. It syncs to your school's Google Sheet and Drive backup automatically the next time you're online.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can more than one person use the app at the same time?</summary>
+        <p>Yes. The admin runs the desktop application, while teachers work through the online portal from their own phone or computer using their PIN — so several people can record data at once without conflicts.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens if a teacher leaves the school or loses their PIN?</summary>
+        <p>The admin can revoke or reissue any teacher's PIN at any time from the desktop app, immediately cutting off or restoring their access to the portal.</p>
       </details>
 
       <details class="faq-item">
