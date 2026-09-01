@@ -677,7 +677,7 @@
       /* Screenshots */
       .shots {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 16px;
         margin: 8px 0 10px;
       }
@@ -1038,18 +1038,23 @@
           <span class="num">03</span><span class="eyebrow">Screenshots</span>
         </div>
 
-        <!-- Swap in real clip filenames once recorded; keep the .shot fallback text as alt content -->
         <div class="shots">
           <div class="shot">
-            <video autoplay muted loop playsinline poster="./images/desktop-demo-poster.jpg">
-              <source src="./images/desktop-demo.mp4" type="video/mp4" />
-              Desktop app screenshot
+            <video autoplay muted loop playsinline poster="./images/report_card-poster.jpg">
+              <source src="./images/report_card.mp4" type="video/mp4" />
+              Report card screenshot
             </video>
           </div>
           <div class="shot">
-            <video autoplay muted loop playsinline poster="./images/portal-demo-poster.jpg">
-              <source src="./images/portal-demo.mp4" type="video/mp4" />
-              Online portal screenshot
+            <video autoplay muted loop playsinline poster="./images/sba_marks_screen_shot-poster.jpg">
+              <source src="./images/sba_marks_screen_shot.mp4" type="video/mp4" />
+              SBA marks entry screenshot
+            </video>
+          </div>
+          <div class="shot">
+            <video autoplay muted loop playsinline poster="./images/online_teacher_portal-poster.jpg">
+              <source src="./images/online_teacher_portal.mp4" type="video/mp4" />
+              Online teacher portal screenshot
             </video>
           </div>
         </div>
