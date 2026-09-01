@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions | Mmodemmo School Management System</title>
+  <meta name="description" content="Terms and Conditions for Mmodemmo School Management System, covering the desktop application license, online portal, and school data responsibilities.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="/terms.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --board:#1F3D2E; --board-light:#3E7357; --board-ink:#F3EFE3; --board-line: rgba(243,239,227,0.16); --gold:#E4B75C;
+      --paper:#FBFAF5; --card:#FFFFFF; --ink:#16263A; --ink-soft:#4A5568;
+      --stamp:#A6362B; --stamp-deep:#7E281F; --line: rgba(22,38,58,0.12);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink-soft);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--stamp);text-underline-offset:3px}
+    a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+    h1,h2,h3{font-family:'Fraunces',serif;color:var(--ink);margin:0}
+    h1{font-size:clamp(2.1rem,5vw,3rem);line-height:1.1;font-weight:600;margin:12px 0 8px}
+    h3{font-size:1.08rem;font-weight:600;margin:22px 0 7px;color:var(--stamp-deep)}
+
+    /* Nav — matches index.html / privacy.html */
+    .nav{ position:sticky; top:0; z-index:40; background:rgba(31,61,46,0.96); backdrop-filter:blur(6px); border-bottom:1px solid var(--board-line); }
+    .nav-inner{ max-width:920px; margin:0 auto; padding:12px 24px 12px 12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:9px; text-decoration:none; }
+    .brand img{ width:56px; height:56px; object-fit:contain; display:block; flex-shrink:0; }
+    .nav-links{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+    .nav-links a{ font-size:.9rem; font-weight:500; text-decoration:none; color:var(--board-ink); opacity:.82; position:relative; padding:6px 10px; margin:-6px -10px; border-radius:4px; transition:opacity .15s ease, background .15s ease, color .15s ease; }
+    .nav-links a.current{ opacity:1; background:rgba(243,239,227,0.12); color:var(--gold); }
+    .nav-links a.current::after{ content:''; position:absolute; left:10px; right:10px; bottom:2px; height:1px; background:var(--gold); }
+    .nav-links a:hover{ opacity:1; background:rgba(243,239,227,0.12); color:var(--gold); }
+    .nav a.pill{ font-size:.86rem; font-weight:600; text-decoration:none; color:var(--board); background:var(--board-ink); padding:8px 16px; border-radius:3px; transition:transform .15s ease, background .15s ease, color .15s ease; opacity:1; }
+    .nav a.pill:hover{ transform:translateY(-2px); background:var(--stamp); color:#fff; }
+
+    @media(max-width:640px){
+      .nav-inner{ padding:10px 14px 10px 10px; gap:6px; }
+      .brand img{ width:38px; height:38px; }
+      .nav-links{ gap:4px; }
+      .nav-links a{ font-size:.76rem; padding:6px 7px; margin:-6px -7px; }
+    }
+
+    .wrap{max-width:760px;margin:auto;padding:56px 24px 80px}
+    .eyebrow{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.07em;font-size:.74rem;color:var(--stamp);font-weight:600}
+    .updated{color:var(--ink-soft);font-size:.9rem;margin:10px 0 26px}
+    .intro{font-size:1.05rem;color:var(--ink-soft);max-width:62ch}
+
+    .card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--stamp);border-radius:4px;padding:22px 24px;margin:20px 0;box-shadow:0 1px 2px rgba(22,38,58,0.03)}
+    .card p:first-child{margin-top:0}
+    .card p:last-child{margin-bottom:0}
+
+    ul{padding-left:1.25rem;margin:8px 0}
+    li{margin:8px 0;color:var(--ink-soft)}
+    p{margin:8px 0;color:var(--ink-soft)}
+    strong{color:var(--board)}
+    strong.item-label{color:var(--stamp-deep)}
+
+    .toc{display:flex;flex-wrap:wrap;gap:8px 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:30px 0}
+    .toc a{font-size:.85rem;font-weight:600;text-decoration:none;color:var(--board-ink);background:var(--board);border:1px solid var(--board);border-radius:16px;padding:6px 13px;transition:transform .15s ease,border-color .15s ease,background .15s ease,color .15s ease}
+    .toc a:hover{transform:translateY(-2px);border-color:var(--board-light);background:var(--board-light);color:#fff}
+
+    /* Numbered section headers — matches index.html's "01 What it does" style */
+    .section{margin-top:52px;padding-top:26px;border-top:1px solid var(--line)}
+    .section-label{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+    .section-label .num{font-family:'IBM Plex Mono',monospace;font-size:.9rem;font-weight:600;color:#fff;background:var(--stamp);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .section-label h2{font-size:1.4rem;font-weight:600;letter-spacing:0;color:var(--ink);position:relative;padding-bottom:6px}
+    .section-label h2::after{content:'';position:absolute;left:0;bottom:0;width:42px;height:3px;background:var(--gold);border-radius:2px}
+    .subsection h3:first-child{margin-top:0}
+
+    .support-email{font-family:'IBM Plex Mono',monospace;font-size:.94rem;padding:2px 6px;margin:-2px -6px;border-radius:4px;transition:background .15s ease,color .15s ease}
+    .support-email:hover{background:var(--stamp);color:#fff}
+
+    footer{border-top:1px solid var(--line);margin-top:52px;padding-top:24px;color:var(--ink-soft);font-size:.9rem;display:flex;flex-wrap:wrap;gap:6px 18px}
+    footer a{font-weight:600;text-decoration:none;padding:4px 8px;margin:-4px -8px;border-radius:4px;transition:background .15s ease,color .15s ease}
+    footer a:hover{background:var(--stamp);color:#fff}
+
+    @media(max-width:600px){.wrap{padding:40px 18px 60px}.card{padding:18px}}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><img src="./images/mmodemmo-logo.png" alt="Mmodemmo Logo"></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html" class="current">Terms</a>
+        <a class="pill" href="sales.html">Features &amp; pricing →</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="eyebrow">Legal</div>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="updated"><strong>Effective date:</strong> September 1, 2026</p>
+
+    <p class="intro">
+      These Terms &amp; Conditions govern the use of Mmodemmo School Management System —
+      the Windows desktop application and its companion online portal. By installing,
+      activating, or using the application, a school and its authorized users agree to
+      these terms.
+    </p>
+
+    <div class="toc" aria-label="Terms and Conditions sections">
+      <a href="#license">License</a>
+      <a href="#use">Acceptable Use</a>
+      <a href="#data">School Data</a>
+      <a href="#payment">Payment</a>
+      <a href="#google">Google Account</a>
+      <a href="#warranty">Warranty</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">01</span><h2>Acceptance of These Terms</h2></div>
+      <p>
+        By downloading, installing, activating, or using Mmodemmo School Management System
+        (the "Application"), you confirm that you are authorized to do so on behalf of your
+        school and agree to be bound by these Terms &amp; Conditions and by our
+        <a href="privacy.html">Privacy Policy</a>. If you do not agree, do not install or use
+        the Application.
+      </p>
+    </div>
+
+    <div class="section" id="license">
+      <div class="section-label"><span class="num">02</span><h2>The Application &amp; Your License</h2></div>
+      <ul>
+        <li><strong class="item-label">What is licensed</strong> — a non-exclusive, non-transferable license to install and use the Application on computers belonging to the licensed school, for that school's own record-keeping and reporting.</li>
+        <li><strong class="item-label">One-time purchase</strong> — the license is sold as a one-time purchase per school, with no recurring subscription fee and no built-in expiry, as described on the pricing page.</li>
+        <li><strong class="item-label">Ownership</strong> — the Application, its source code, design, and branding remain the property of its developer. Purchasing a license does not transfer ownership of the software itself, only the right to use it as described here.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="use">
+      <div class="section-label"><span class="num">03</span><h2>Acceptable Use</h2></div>
+      <p>You agree not to:</p>
+      <ul>
+        <li>reverse-engineer, decompile, or attempt to extract the source code of the Application, except where applicable law expressly permits it;</li>
+        <li>redistribute, resell, sublicense, or share the installer or a license outside the licensed school without prior written permission;</li>
+        <li>use the Application, the online portal, or the Google account connection to store or process data unrelated to the school's own administrative and academic records;</li>
+        <li>attempt to bypass the PIN-based access controls used for teacher accounts on the online portal, or access records outside your assigned classes and duties; or</li>
+        <li>use the Application in a way that violates applicable law or infringes the rights of others.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="data">
+      <div class="section-label"><span class="num">04</span><h2>School Data &amp; Your Responsibilities</h2></div>
+      <p>
+        Student names, marks, attendance, levy, and other academic records entered into the
+        Application belong to the school that entered them. The school and its administrators
+        are responsible for the accuracy of that data, for controlling which teachers have
+        portal access, and for complying with any school-level or legal obligations concerning
+        student information. See our <a href="privacy.html">Privacy Policy</a> for how data
+        handled by the Application is described and protected.
+      </p>
+    </div>
+
+    <div class="section" id="payment">
+      <div class="section-label"><span class="num">05</span><h2>Payment, Licensing Model &amp; Refunds</h2></div>
+      <p>
+        Current pricing and what is included in a purchase are described on the
+        <a href="sales.html">Features &amp; pricing</a> page. A specific refund request is
+        considered on a case-by-case basis — contact
+        <a class="support-email" href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a>
+        with your purchase details before assuming a refund will be issued.
+      </p>
+    </div>
+
+    <div class="section" id="google">
+      <div class="section-label"><span class="num">06</span><h2>Google Account &amp; Third-Party Services</h2></div>
+      <p>
+        Where a school administrator connects a Google account, that connection is subject to
+        Google's own terms of service in addition to these Terms and our
+        <a href="privacy.html">Privacy Policy</a>. The developer is not responsible for the
+        availability, performance, or policies of Google's services, and a school may revoke
+        the Application's Google account access at any time through its Google Account settings.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">07</span><h2>Support, Updates &amp; Availability</h2></div>
+      <p>
+        Support requests can be sent to
+        <a class="support-email" href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a>.
+        Updates to the Application may be released from time to time; installing an update is
+        optional unless stated otherwise for a specific fix. The online portal depends on the
+        continued availability of third-party infrastructure, including Google's services, and
+        the developer does not guarantee uninterrupted availability of either the desktop
+        application or the online portal.
+      </p>
+    </div>
+
+    <div class="section subsection" id="warranty">
+      <div class="section-label"><span class="num">08</span><h2>Disclaimer of Warranties</h2></div>
+      <h3>Provided "As Is"</h3>
+      <p>
+        The Application is provided "as is" and "as available," without warranties of any kind,
+        express or implied, including but not limited to fitness for a particular purpose,
+        merchantability, or non-infringement, except where such a disclaimer is restricted by
+        applicable law.
+      </p>
+      <h3>Limitation of Liability</h3>
+      <p>
+        To the maximum extent permitted by applicable law, the developer is not liable for
+        indirect, incidental, or consequential damages arising from use of the Application,
+        including loss of data not otherwise backed up by the school. Nothing in these Terms
+        limits liability that cannot be excluded under applicable law.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">09</span><h2>Termination</h2></div>
+      <p>
+        A license may be terminated if these Terms are materially breached, including
+        unauthorized redistribution of the Application. A school may stop using the Application
+        at any time. Termination does not automatically delete records already synced to the
+        school's own Google Sheet or Drive backup, since those remain under the school's own
+        Google account.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">10</span><h2>Changes to These Terms</h2></div>
+      <p>
+        These Terms may be updated as the Application, its licensing model, or legal
+        requirements change. The effective date at the top of this page will be updated when
+        the Terms are revised, and material changes will be reflected on this page.
+      </p>
+    </div>
+
+    <div class="section" id="contact">
+      <div class="section-label"><span class="num">11</span><h2>Contact</h2></div>
+      <div class="card">
+        <p><strong>Mmodemmo School Management System</strong></p>
+        <p>Email: <a class="support-email" href="mailto:cosmopolitech.dev@gmail.com">cosmopolitech.dev@gmail.com</a></p>
+      </div>
+    </div>
+
+    <footer>
+      <a href="index.html">Mmodemmo School Management System</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="sales.html">Features &amp; Pricing</a>
+    </footer>
+  </main>
+</body>
+</html>
