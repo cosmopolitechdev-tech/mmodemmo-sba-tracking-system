@@ -1,8 +1,12 @@
+![Mmodemmo logo](images/mmodemmo-logo.png)
+
 # Mmodemmo School Management System — Website
 
 Marketing and legal pages for **Mmodemmo School Management System**, a one-time-purchase
 Windows desktop application (with a companion online portal) built for Ghanaian basic
 schools — covering attendance, levy collection, SBA/exam marks, and report cards.
+
+Live site: https://cosmopolitechdev-tech.github.io/mmodemmo-sma-portal/
 
 ## Features covered on the site
 
@@ -17,6 +21,18 @@ schools — covering attendance, levy collection, SBA/exam marks, and report car
 Pricing is one-time purchase, with no subscription and no built-in expiry — see `sales.html`
 for current tiers (Desktop Only vs. Desktop + Online Portal).
 
+## Screenshot
+
+![Sample report card](images/report_card_sample.png)
+
+## Walkthroughs
+
+Click a thumbnail to open the video clip.
+
+[![Report card generation walkthrough](images/report_card-poster.jpg)](images/report_card.mp4)
+[![SBA marks entry walkthrough](images/sba_marks_screen_shot-poster.jpg)](images/sba_marks_screen_shot.mp4)
+[![Online teacher portal walkthrough](images/online_teacher_portal-poster.jpg)](images/online_teacher_portal.mp4)
+
 ## Pages
 
 | File | Purpose |
@@ -26,16 +42,6 @@ for current tiers (Desktop Only vs. Desktop + Online Portal).
 | `privacy.html` | Privacy policy |
 | `terms.html` | Terms & conditions |
 | `images/` | Logo, screenshots, and short feature-preview clips |
-
-## Screenshots & previews
-
-Assets already in `images/` that can be referenced from the site or embedded here:
-
-- `mmodemmo-logo.png` — app logo
-- `report_card_sample.png` — sample generated report card
-- `report_card.mp4` (poster: `report_card-poster.jpg`) — report card generation walkthrough
-- `sba_marks_screen_shot.mp4` (poster: `sba_marks_screen_shot-poster.jpg`) — SBA marks entry walkthrough
-- `online_teacher_portal.mp4` (poster: `online_teacher_portal-poster.jpg`) — online teacher portal walkthrough
 
 ## Contact
 
