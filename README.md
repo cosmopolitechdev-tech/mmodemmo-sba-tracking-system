@@ -1,4 +1,6 @@
-![Mmodemmo logo](images/mmodemmo-logo.png)
+<p align="center">
+  <img src="images/mmodemmo-logo.png" alt="Mmodemmo logo" width="160">
+</p>
 
 # Mmodemmo School Management System — Website
 
@@ -23,7 +25,7 @@ for current tiers (Desktop Only vs. Desktop + Online Portal).
 
 ## Screenshot
 
-![Sample report card](images/report_card_sample.png)
+<img src="images/report_card_sample.png" alt="Sample report card" width="500">
 
 ## Walkthroughs
 
