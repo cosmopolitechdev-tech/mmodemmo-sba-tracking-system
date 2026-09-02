@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mmodemmo School Management System for Ghanaian Basic School</title>
+    <title>Mmodemmo School Management System — Report Cards, Attendance &amp; Levies on One System</title>
     <meta
       name="description"
-      content="Mmodemmo School Management System — a desktop and online system for school attendance, levy collection, SBA/exam marks, and report cards."
+      content="A one-time-purchase desktop and online system for Ghanaian schools: attendance, levies, SBA marks, mock exams, and instant report cards."
     />
+    <link rel="canonical" href="/sales.html">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,6 +19,7 @@
     <style>
       :root {
         --board: #1f3d2e;
+        --board-light: #3e7357;
         --board-ink: #f3efe3;
         --board-line: rgba(243, 239, 227, 0.16);
         --gold: #e4b75c;
@@ -32,13 +34,8 @@
         --card-ink-soft: #c9be9b;
         --card-line: rgba(243, 239, 227, 0.18);
       }
-
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         background: var(--paper);
@@ -47,890 +44,209 @@
         line-height: 1.62;
         -webkit-font-smoothing: antialiased;
       }
-      h1,
-      h2,
-      h3 {
-        font-family: "Fraunces", serif;
-        color: var(--ink);
-        margin: 0;
-      }
-      a {
-        color: var(--ink);
-        transition: color 0.15s ease;
-      }
-      a:hover {
-        color: var(--stamp);
-      }
-      .wrap {
-        max-width: 920px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
+      h1, h2, h3 { font-family: "Fraunces", serif; color: var(--ink); margin: 0; }
+      a { color: var(--ink); transition: color 0.15s ease; }
+      a:hover { color: var(--stamp); }
+      a:focus-visible { outline: 3px solid var(--stamp); outline-offset: 3px; }
+      .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
       .eyebrow {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.74rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        font-family: "IBM Plex Mono", monospace; font-size: 0.74rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
       }
-
       @media (prefers-reduced-motion: reduce) {
-        * {
-          animation-duration: 0.001ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.001ms !important;
-          scroll-behavior: auto !important;
-        }
+        * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
+            transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
       }
 
-      /* Nav */
-      .nav {
-        position: sticky;
-        top: 0;
-        z-index: 40;
-        background: rgba(31, 61, 46, 0.94);
-        backdrop-filter: blur(6px);
-        border-bottom: 1px solid var(--board-line);
-      }
-
-      .nav-inner {
-        max-width: 920px;
-        margin: 0 auto;
-        padding: 12px 24px 12px 12px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      .nav-links .pill-short {
-        display: none;
-      }
-
-      @media (max-width: 640px) {
-        .nav-inner {
-          flex-wrap: nowrap;
-          padding: 10px 14px 10px 10px;
-          gap: 6px;
-        }
-        .brand img {
-          width: 38px;
-          height: 38px;
-        }
-        .nav-links {
-          gap: 4px;
-        }
-        .nav-links a {
-          font-size: 0.76rem;
-          padding: 6px 7px;
-          margin: -6px -7px;
-        }
-        .nav a.pill {
-          font-size: 0.76rem;
-          padding: 7px 10px;
-          white-space: nowrap;
-        }
-        .nav-links .pill-full {
-          display: none;
-        }
-        .nav-links .pill-short {
-          display: inline;
-        }
-      }
-
-      /* Mmodemmo logo */
-      .brand {
-        font-family: "Fraunces", serif;
-        font-weight: 700;
-        font-size: 1.22rem;
-        letter-spacing: 0.01em;
-        color: var(--gold);
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        text-decoration: none;
-        transition: color 0.15s ease;
-      }
-
-      .brand img {
-        width: 56px;
-        height: 56px;
-        object-fit: contain;
-        display: block;
-        flex-shrink: 0;
-      }
-
-      .brand:hover {
-        color: #fff;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-        flex-wrap: wrap;
-      }
+      /* Nav — matches index.html / privacy.html / terms.html */
+      .nav { position: sticky; top: 0; z-index: 40; background: rgba(31, 61, 46, 0.94);
+             backdrop-filter: blur(6px); border-bottom: 1px solid var(--board-line); }
+      .nav-inner { max-width: 920px; margin: 0 auto; padding: 12px 24px 12px 12px;
+                   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+      .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+      .brand img { width: 56px; height: 56px; object-fit: contain; display: block; flex-shrink: 0; }
+      .nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
       .nav-links a {
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-decoration: none;
-        color: var(--board-ink);
-        opacity: 0.82;
-        position: relative;
-        padding: 6px 10px;
-        margin: -6px -10px;
-        border-radius: 4px;
-        transition:
-          opacity 0.15s ease,
-          background 0.15s ease,
-          color 0.15s ease;
+        font-size: 0.9rem; font-weight: 500; text-decoration: none; color: var(--board-ink);
+        opacity: 0.82; position: relative; padding: 6px 10px; margin: -6px -10px; border-radius: 4px;
+        transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
       }
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        left: 10px;
-        right: calc(100% - 10px);
-        bottom: 2px;
-        height: 1px;
-        background: var(--stamp);
-        transition: right 0.2s ease;
-      }
-      .nav-links a:hover {
-        opacity: 1;
-        background: rgba(243, 239, 227, 0.12);
-        color: var(--gold);
-      }
-      .nav-links a:hover::after {
-        right: 10px;
-      }
+      .nav-links a:hover { opacity: 1; background: rgba(243, 239, 227, 0.12); color: var(--gold); }
       .nav a.pill {
-        font-size: 0.86rem;
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--board);
-        background: var(--board-ink);
-        padding: 8px 16px;
-        border-radius: 3px;
-        transition:
-          transform 0.15s ease,
-          background 0.15s ease,
-          color 0.15s ease;
-        opacity: 1;
+        font-size: 0.86rem; font-weight: 600; text-decoration: none; color: var(--board);
+        background: var(--board-ink); padding: 8px 16px; border-radius: 3px;
+        transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease; opacity: 1;
       }
-      .nav a.pill::after {
-        display: none;
-      }
-      .nav a.pill:hover {
-        transform: translateY(-2px);
-        background: var(--stamp);
-        color: #fff;
-      }
-
-      /* Hero: chalkboard */
-      .hero {
-        background:
-          radial-gradient(
-            circle at 12% 18%,
-            rgba(255, 255, 255, 0.05),
-            transparent 40%
-          ),
-          linear-gradient(180deg, #1f3d2e 0%, #1b3527 100%);
-        color: var(--board-ink);
-        padding: 58px 0 96px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .chalk-dust {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-      .chalk-dust span {
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        background: var(--board-ink);
-        border-radius: 50%;
-        opacity: 0;
-        animation: drift 7s ease-in-out infinite;
-      }
-
-      @keyframes drift {
-        0% {
-          opacity: 0;
-          transform: translateY(0);
-        }
-        15% {
-          opacity: 0.35;
-        }
-        85% {
-          opacity: 0.2;
-        }
-        100% {
-          opacity: 0;
-          transform: translateY(-40px);
-        }
-      }
-
-      /* Corner badge — tucked at the top-left edge, tilted, sitting just under the nav without overlapping it */
-      .corner-badge {
-        position: absolute;
-        top: 22px;
-        left: -14px;
-        z-index: 4;
-        transform: rotate(-35deg);
-        background: var(--stamp);
-        color: #fff;
-        padding: 12px 30px 12px 22px;
-        border-radius: 2px;
-        font-family: "Fraunces", serif;
-        font-weight: 700;
-        font-style: italic;
-        font-size: 0.95rem;
-        line-height: 1.55;
-        text-align: left;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        animation:
-          badgeIn 0.6s ease forwards 0.05s,
-          badgeGlow 2.6s ease-in-out infinite 1s;
-      }
-      .corner-badge span {
-        display: block;
-        white-space: nowrap;
-      }
-
-      @keyframes badgeIn {
-        from {
-          opacity: 0;
-          transform: rotate(-35deg) translateY(-6px);
-        }
-        to {
-          opacity: 1;
-          transform: rotate(-35deg) translateY(0);
-        }
-      }
-
-      @keyframes badgeGlow {
-        0%,
-        100% {
-          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-        }
-        50% {
-          box-shadow: 0 6px 20px rgba(228, 183, 92, 0.55);
-        }
-      }
-
+      .nav a.pill:hover { transform: translateY(-2px); background: var(--stamp); color: #fff; }
       @media (max-width: 640px) {
-        .corner-badge {
-          font-size: 0.72rem;
-          padding: 8px 20px 8px 14px;
-          top: 16px;
-          left: -10px;
-        }
+        .nav-inner { padding: 10px 14px 10px 10px; gap: 6px; }
+        .brand img { width: 38px; height: 38px; }
+        .nav-links { gap: 22px; }
+        .nav-links a { font-size: 0.76rem; padding: 6px 7px; margin: -6px -7px; }
+        .nav a.pill { font-size: 0.76rem; padding: 7px 10px; white-space: nowrap; }
       }
 
-      .hero-inner {
-        position: relative;
-        z-index: 2;
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 0 24px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      /* Hero */
+      .hero {
+        background: linear-gradient(180deg, #1f3d2e 0%, #1b3527 100%);
+        color: var(--board-ink); padding: 58px 0 80px;
       }
-      .app-fullname {
-        font-family: "Fraunces", serif;
-        font-weight: 700;
-        font-size: clamp(1.2rem, 2.8vw, 1.55rem);
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin: 8px auto 0;
-        max-width: 40ch;
-        opacity: 0;
-        animation: riseIn 0.7s ease forwards 0.18s;
-      }
-      .hero h1 {
-        font-size: clamp(2.4rem, 5.8vw, 3.75rem);
-        font-weight: 900;
-        color: var(--gold);
-        line-height: 1.1;
-        margin: 14px auto 18px;
-        max-width: 26ch;
-        opacity: 0;
-        animation: riseIn 0.7s ease forwards 0.25s;
-      }
-      .hero .lede {
-        font-size: 1.12rem;
-        color: #dcd6c2;
-        max-width: 66ch;
-        margin: 0 auto;
-        opacity: 0;
-        animation: riseIn 0.7s ease forwards 0.4s;
-      }
-      .hero-ctas {
-        display: flex;
-        gap: 14px;
-        margin-top: 30px;
-        flex-wrap: wrap;
-        justify-content: center;
-        opacity: 0;
-        animation: riseIn 0.7s ease forwards 0.55s;
-      }
-
-      @keyframes riseIn {
-        from {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
+      .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+      @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+      .hero .eyebrow { color: var(--gold); margin-bottom: 14px; display: block; }
+      .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3rem); font-weight: 800; color: var(--gold); line-height: 1.1; }
+      .hero p.lede { font-size: 1.1rem; color: #dcd6c2; max-width: 46ch; margin-top: 14px; }
+      .cta-row { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
       .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-        font-size: 0.94rem;
-        text-decoration: none;
-        padding: 12px 22px;
-        border-radius: 3px;
-        transition:
-          transform 0.12s ease,
-          background 0.15s ease,
-          color 0.15s ease,
-          border-color 0.15s ease;
+        display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.94rem;
+        text-decoration: none; padding: 12px 22px; border-radius: 3px;
+        transition: transform 0.12s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
       }
-      .btn-primary {
-        background: var(--stamp);
-        color: #fff;
-      }
-      .btn-primary:hover {
-        transform: translateY(-2px) scale(1.02);
-        background: var(--stamp-deep);
-        color: var(--gold);
-      }
-      .btn-primary:active {
-        transform: scale(0.94) rotate(-1deg);
-      }
-      .btn-ghost {
-        border: 1.5px solid rgba(243, 239, 227, 0.4);
-        color: var(--board-ink);
-        background: transparent;
-      }
-      .btn-ghost:hover {
-        border-color: var(--board-ink);
-        transform: translateY(-2px);
-        background: var(--board-ink);
-        color: var(--board);
-      }
+      .btn:hover { transform: translateY(-2px); }
+      .btn-primary { background: var(--stamp); color: #fff; }
+      .btn-primary:hover { background: var(--stamp-deep); color: var(--gold); }
+      .btn-ghost { border: 1.5px solid rgba(243, 239, 227, 0.4); color: var(--board-ink); background: transparent; }
+      .btn-ghost:hover { border-color: var(--board-ink); background: var(--board-ink); color: var(--board); }
 
-      .btn-download {
-        position: relative;
+      /* Report card photo — signature element */
+      .report-card-photo {
+        position: relative; background: #fff; border-radius: 6px; padding: 8px;
+        box-shadow: 0 18px 34px -14px rgba(0, 0, 0, 0.35); transform: rotate(-1.2deg);
       }
-      .btn-download::after {
-        content: "";
-        position: absolute;
-        inset: -4px;
-        border: 1.5px solid var(--stamp);
-        border-radius: 5px;
-        opacity: 0;
-        animation: pulseRing 2.2s ease-out infinite 1.6s;
-      }
-
-      @keyframes pulseRing {
-        0% {
-          opacity: 0.55;
-          transform: scale(1);
-        }
-        100% {
-          opacity: 0;
-          transform: scale(1.18);
-        }
-      }
-
-      .hero-note {
-        margin-top: 12px;
-        font-size: 0.82rem;
-        color: #b9c0ae;
-        opacity: 0;
-        animation: riseIn 0.7s ease forwards 0.68s;
-      }
-      .hero-note a {
-        color: var(--gold);
-        font-weight: 600;
-        text-decoration: underline;
-      }
-      .hero-note a:hover {
-        color: #fff;
+      .report-card-photo img { display: block; width: 100%; border-radius: 3px; }
+      .stamp-badge {
+        position: absolute; right: 20px; bottom: 20px; width: 84px; height: 84px;
+        border: 3px solid var(--stamp); border-radius: 50%; color: var(--stamp);
+        display: flex; align-items: center; justify-content: center; text-align: center;
+        font-family: "IBM Plex Mono", monospace; font-weight: 700; font-size: 0.74rem;
+        transform: rotate(11deg); opacity: 0.9; letter-spacing: 0.03em;
       }
 
       /* Reveal on scroll */
-      .reveal {
-        opacity: 0;
-        transform: translateY(22px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-      .reveal.in {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .reveal.in { opacity: 1; transform: translateY(0); }
 
-      /* Info / trust card */
-      .info-card {
-        background: var(--card);
-        border: 1px solid var(--card-line);
-        border-left: 3px solid var(--stamp);
-        border-radius: 4px;
-        padding: 28px 30px;
-        margin: 0 0 22px;
-        box-shadow: 0 1px 2px rgba(22, 38, 58, 0.03);
-      }
-      .info-card h2 {
-        font-size: 1.18rem;
-        margin-bottom: 12px;
-        font-weight: 600;
-        color: var(--card-ink);
-      }
-      .info-card p {
-        color: var(--card-ink-soft);
-        margin: 0 0 10px;
-      }
-      .info-card p:last-child {
-        margin-bottom: 0;
-      }
-      .info-card ul {
-        color: var(--card-ink-soft);
-        margin: 0 0 10px;
-        padding-left: 1.2em;
-      }
-      .info-card li {
-        margin-bottom: 6px;
-      }
-      .info-card .link-btn {
-        display: inline-block;
-        margin-top: 6px;
-        padding: 4px 8px;
-        margin-left: -8px;
-        border-radius: 4px;
-        font-weight: 700;
-        text-decoration: none;
-        color: var(--stamp);
-        border-bottom: 2px solid var(--stamp);
-        transition:
-          background 0.15s ease,
-          color 0.15s ease;
-      }
-      .info-card .link-btn:hover {
-        background: var(--stamp);
-        color: #fff;
-        border-bottom-color: var(--stamp);
-      }
-      .info-card p a {
-        color: var(--stamp);
-        font-weight: 700;
-        text-decoration: underline;
-      }
-      .info-card p a:hover {
-        color: #fff;
-      }
-
-      .section {
-        padding: 54px 0 0;
-      }
-      .section-label {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        color: var(--ink-soft);
-        margin: 0 0 28px;
-        padding-top: 0;
-      }
+      .section { padding: 54px 0 0; }
+      .section-label { display: flex; align-items: center; gap: 14px; color: var(--ink-soft); margin: 0 0 28px; }
       .section-label .num {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.92rem;
-        font-weight: 600;
-        color: #fff;
-        background: var(--stamp);
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
+        font-family: "IBM Plex Mono", monospace; font-size: 0.92rem; font-weight: 600; color: #fff;
+        background: var(--stamp); width: 34px; height: 34px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       }
       .section-label .eyebrow {
-        font-family: "Fraunces", serif;
-        font-size: 1.5rem;
-        font-weight: 600;
-        letter-spacing: 0;
-        text-transform: none;
-        color: var(--ink);
-        position: relative;
-        padding-bottom: 6px;
+        font-family: "Fraunces", serif; font-size: 1.5rem; font-weight: 600; letter-spacing: 0;
+        text-transform: none; color: var(--ink); position: relative; padding-bottom: 6px;
       }
       .section-label .eyebrow::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 46px;
-        height: 3px;
-        background: var(--gold);
-        border-radius: 2px;
+        content: ""; position: absolute; left: 0; bottom: 0; width: 46px; height: 3px;
+        background: var(--gold); border-radius: 2px;
       }
-      .rule {
-        border: none;
-        border-top: 1px solid var(--line);
-        margin: 54px 0 0;
-      }
+      .section-head p { color: var(--ink-soft); max-width: 62ch; margin: -14px 0 26px; }
+      .rule { border: none; border-top: 1px solid var(--line); margin: 54px 0 0; }
 
-      /* Feature grid — hover pop */
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-        margin-bottom: 8px;
-      }
-      @media (max-width: 640px) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
+      /* Steps grid */
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
       .feat {
-        background: var(--card);
-        border: 1px solid var(--card-line);
-        border-radius: 5px;
-        padding: 20px 22px;
-        transition:
-          transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.3),
-          box-shadow 0.22s ease,
-          border-color 0.22s ease;
+        background: var(--card); border: 1px solid var(--card-line); border-radius: 5px; padding: 20px 22px;
+        transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.3), box-shadow 0.22s ease, border-color 0.22s ease;
       }
-      .feat:hover {
-        transform: translateY(-6px) rotate(-0.4deg);
-        box-shadow: 0 14px 26px -14px rgba(22, 38, 58, 0.28);
-        border-color: rgba(166, 54, 43, 0.35);
-      }
-      .feat h3 {
-        font-size: 0.98rem;
-        font-family: "Inter", sans-serif;
-        font-weight: 700;
-        color: var(--card-ink);
-        margin-bottom: 5px;
-      }
-      .feat p {
-        font-size: 0.92rem;
-        color: var(--card-ink-soft);
-        margin: 0;
-      }
-      .feat .dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--stamp);
-        display: inline-block;
-        margin-bottom: 10px;
-        transition: transform 0.22s ease;
-      }
-      .feat:hover .dot {
-        transform: scale(1.8);
-      }
+      .feat:hover { transform: translateY(-6px) rotate(-0.4deg); box-shadow: 0 14px 26px -14px rgba(22, 38, 58, 0.28); border-color: rgba(166, 54, 43, 0.35); }
+      .feat .num { font-family: "IBM Plex Mono", monospace; color: var(--gold); font-weight: 700; font-size: 0.85rem; }
+      .feat h3 { font-size: 1.02rem; font-family: "Fraunces", serif; font-weight: 600; color: var(--card-ink); margin: 8px 0 6px; }
+      .feat p { font-size: 0.92rem; color: var(--card-ink-soft); margin: 0; }
 
-      /* Who it's for */
-      .who-list {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 10px;
+      /* Feature ledger */
+      .ledger { border-top: 2px solid var(--line); }
+      .ledger-row { display: grid; grid-template-columns: 200px 1fr; gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+      @media (max-width: 760px) { .ledger-row { grid-template-columns: 1fr; gap: 10px; } }
+      .ledger-row .who {
+        font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; color: var(--stamp-deep);
+        text-transform: uppercase; letter-spacing: 0.04em; padding-top: 2px;
       }
-      .who-tag {
-        background: var(--card);
-        border: 1px solid var(--card-line);
-        border-radius: 20px;
-        padding: 8px 16px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--card-ink);
-        transition:
-          transform 0.15s ease,
-          background 0.15s ease,
-          color 0.15s ease;
-      }
-      .who-tag:hover {
-        transform: translateY(-2px);
-        background: var(--stamp);
-        color: #fff;
-        border-color: var(--stamp);
-      }
+      .ledger-row ul { margin: 0; padding-left: 1.1em; color: var(--ink-soft); }
+      .ledger-row li { margin-bottom: 7px; }
+      .ledger-row li b { color: var(--ink); }
 
-      /* Screenshots */
-      .shots {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin: 8px 0 10px;
+      /* Pricing / CTA band */
+      .cta-card {
+        background: var(--board); color: var(--board-ink); border-radius: 6px; padding: 34px 32px;
+        display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
       }
-      @media (max-width: 640px) {
-        .shots {
-          grid-template-columns: 1fr;
-        }
-      }
-      .shot {
-        background: var(--card);
-        border: 1px solid var(--card-line);
-        border-radius: 6px;
-        aspect-ratio: 16/10;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--card-ink-soft);
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.76rem;
-        text-align: center;
-        padding: 12px;
-        overflow: hidden;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-      .shot:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px -16px rgba(22, 38, 58, 0.3);
-      }
-      .shot img,
-      .shot video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      /* Testimonials */
-      .testi-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-      }
-      @media (max-width: 640px) {
-        .testi-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      .testi {
-        background: var(--card);
-        border: 1px solid var(--card-line);
-        border-radius: 5px;
-        padding: 20px 22px;
-        transition:
-          transform 0.22s ease,
-          box-shadow 0.22s ease;
-      }
-      .testi:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 14px 26px -14px rgba(22, 38, 58, 0.28);
-      }
-      .testi .stars {
-        color: var(--gold);
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-      }
-      .testi p {
-        color: var(--card-ink-soft);
-        font-size: 0.95rem;
-        margin: 0 0 12px;
-        font-style: italic;
-      }
-      .testi .who {
-        font-weight: 700;
-        font-size: 0.86rem;
-        color: var(--card-ink);
-      }
-      .testi .who span {
-        display: block;
-        font-weight: 500;
-        color: var(--card-ink-soft);
-        font-size: 0.82rem;
-      }
+      .cta-card h2 { color: var(--board-ink); font-size: 1.4rem; }
+      .cta-card p { margin: 8px 0 0; color: #c9d2c4; max-width: 44ch; }
+      @media (max-width: 640px) { .cta-card { flex-direction: column; align-items: flex-start; } }
 
       /* FAQ accordion */
-      .faq {
-        border-top: 1px solid var(--line);
+      .faq-group-title {
+        font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; text-transform: uppercase;
+        letter-spacing: 0.05em; color: var(--stamp); margin: 30px 0 4px;
       }
-      .faq-item {
-        border-bottom: 1px solid var(--line);
-      }
+      .faq-group-title:first-child { margin-top: 0; }
+      .faq { border-top: 1px solid var(--line); }
+      .faq-item { border-bottom: 1px solid var(--line); }
       .faq-item summary {
-        cursor: pointer;
-        list-style: none;
-        padding: 18px 12px;
-        margin: 0 -12px;
-        border-radius: 4px;
-        font-weight: 700;
-        font-size: 1rem;
-        color: var(--ink);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
+        cursor: pointer; list-style: none; padding: 16px 12px; margin: 0 -12px; border-radius: 4px;
+        font-weight: 700; font-size: 0.98rem; color: var(--ink);
+        display: flex; justify-content: space-between; align-items: center; gap: 16px;
         transition: background 0.15s ease;
       }
-      .faq-item summary:hover {
-        background: rgba(166, 54, 43, 0.06);
-      }
-      .faq-item summary::-webkit-details-marker {
-        display: none;
-      }
+      .faq-item summary:hover { background: rgba(166, 54, 43, 0.06); }
+      .faq-item summary::-webkit-details-marker { display: none; }
       .faq-item summary::after {
-        content: "+";
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 1.3rem;
-        color: var(--stamp);
-        flex-shrink: 0;
-        transition: transform 0.2s ease;
+        content: "+"; font-family: "IBM Plex Mono", monospace; font-size: 1.3rem; color: var(--stamp);
+        flex-shrink: 0; transition: transform 0.2s ease;
       }
-      .faq-item[open] summary::after {
-        transform: rotate(45deg);
-      }
-      .faq-item p {
-        color: var(--ink-soft);
-        margin: 0 0 18px;
-        padding-right: 30px;
-        font-size: 0.95rem;
-      }
+      .faq-item[open] summary::after { transform: rotate(45deg); }
+      .faq-item p { color: var(--ink-soft); margin: 0 0 16px; padding-right: 30px; font-size: 0.93rem; }
+      .faq-item p.todo { color: var(--stamp-deep); font-style: italic; }
 
-      .support-email {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.94rem;
-        padding: 2px 6px;
-        margin: -2px -6px;
-        border-radius: 4px;
-        transition:
-          background 0.15s ease,
-          color 0.15s ease;
+      /* Demo / contact */
+      .contact-card {
+        background: var(--card); border: 1px solid var(--card-line); border-radius: 6px; padding: 34px;
+        display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px;
       }
-      .support-email:hover {
-        background: var(--stamp);
-        color: #fff;
+      @media (max-width: 760px) { .contact-card { grid-template-columns: 1fr; padding: 24px; } }
+      .video-frame { position: relative; padding-top: 56.25%; background: #0f2018; border-radius: 4px; overflow: hidden; }
+      .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .qr-box { text-align: center; background: var(--board-ink); border-radius: 4px; padding: 20px; align-self: start; }
+      .qr-box img { width: 150px; height: 150px; display: block; margin: 0 auto 10px; }
+      .qr-box .cap { font-family: "IBM Plex Mono", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+      .contact-links { margin-top: 18px; }
+      .contact-links a {
+        display: block; margin-bottom: 8px; font-weight: 600; text-decoration: none; color: var(--card-ink);
+        padding: 4px 6px; margin-left: -6px; border-radius: 4px; transition: background 0.15s ease, color 0.15s ease;
       }
+      .contact-links a:hover { background: var(--stamp); color: #fff; }
 
       footer {
-        margin-top: 60px;
-        padding: 26px 0 50px;
-        border-top: 1px solid var(--line);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
+        margin-top: 60px; padding: 26px 0 50px; border-top: 1px solid var(--line);
+        display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
       }
-      footer .small {
-        font-size: 0.86rem;
-        color: var(--ink-soft);
-      }
+      footer .small { font-size: 0.86rem; color: var(--ink-soft); }
       footer .flinks a {
-        font-weight: 600;
-        text-decoration: none;
-        margin-left: 20px;
-        font-size: 0.9rem;
-        color: var(--ink);
-        padding: 4px 8px;
-        margin-right: -8px;
-        border-radius: 4px;
-        transition:
-          background 0.15s ease,
-          color 0.15s ease;
+        font-weight: 600; text-decoration: none; margin-left: 20px; font-size: 0.9rem; color: var(--ink);
+        padding: 4px 8px; margin-right: -8px; border-radius: 4px; transition: background 0.15s ease, color 0.15s ease;
       }
-      footer .flinks a:first-child {
-        margin-left: 0;
-      }
-      footer .flinks a:hover {
-        background: var(--stamp);
-        color: #fff;
-      }
-
-      .cta-banner {
-        margin-top: 10px;
-      }
-      .cta-card {
-        background: var(--board);
-        color: var(--board-ink);
-        border-radius: 6px;
-        padding: 34px 32px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        flex-wrap: wrap;
-      }
-      .cta-card h2 {
-        color: var(--board-ink);
-      }
-
-      @media (max-width: 640px) {
-        .cta-card {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
+      footer .flinks a:first-child { margin-left: 0; }
+      footer .flinks a:hover { background: var(--stamp); color: #fff; }
 
       /* Scroll-to-top / scroll-to-bottom */
       .scroll-nav {
-        position: fixed;
-        right: 20px;
-        bottom: 24px;
-        z-index: 50;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        position: fixed; right: 20px; bottom: 24px; z-index: 50;
+        display: flex; flex-direction: column; gap: 10px;
       }
       .scroll-nav button {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        background: var(--board);
-        color: var(--board-ink);
-        font-size: 1.1rem;
-        line-height: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-        opacity: 0.9;
-        transition:
-          transform 0.15s ease,
-          background 0.15s ease,
-          opacity 0.15s ease;
+        width: 42px; height: 42px; border-radius: 50%; border: none; cursor: pointer;
+        background: var(--board); color: var(--board-ink); font-size: 1.1rem; line-height: 1;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); opacity: 0.9;
+        transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
       }
-      .scroll-nav button:hover {
-        transform: translateY(-2px);
-        background: var(--stamp);
-        opacity: 1;
-      }
+      .scroll-nav button:hover { transform: translateY(-2px); background: var(--stamp); opacity: 1; }
       @media (max-width: 640px) {
-        .scroll-nav {
-          right: 14px;
-          bottom: 16px;
-          gap: 8px;
-        }
-        .scroll-nav button {
-          width: 38px;
-          height: 38px;
-          font-size: 1rem;
-        }
+        .scroll-nav { right: 14px; bottom: 16px; gap: 8px; }
+        .scroll-nav button { width: 38px; height: 38px; font-size: 1rem; }
       }
     </style>
   </head>
@@ -938,490 +254,227 @@
   <body>
     <div class="nav">
       <div class="nav-inner">
-        <a class="brand" href="index.html">
-          <img src="./images/mmodemmo-logo.png" alt="Mmodemmo Logo" />
-        </a>
-
+        <a class="brand" href="index.html"><img src="./images/mmodemmo-logo.png" alt="Mmodemmo Logo" /></a>
         <div class="nav-links">
           <a href="index.html">Home</a>
-          <a href="privacy.html"
-            ><span class="pill-full">Privacy Policy</span
-            ><span class="pill-short">Privacy</span></a
-          >
-          <a href="terms.html"
-            ><span class="pill-full">Terms</span
-            ><span class="pill-short">Terms</span></a
-          >
-          <a class="pill" href="sales.html"
-            ><span class="pill-full">Features &amp; pricing →</span
-            ><span class="pill-short">Pricing</span></a
-          >
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a class="pill" href="#contact">Book a demo →</a>
         </div>
       </div>
     </div>
 
     <header class="hero">
-      <div class="chalk-dust" id="chalkDust"></div>
-      <div class="corner-badge">
-        <span>&middot; One Time Purchase</span>
-        <span>&middot; No Subscription</span>
-        <span>&middot; No Expiry</span>
-      </div>
-
-      <div class="hero-inner">
-        <div class="app-fullname">
-          Mmodemmo School Management System for Ghanaian Basic Schools
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">For school owners &amp; administrators</span>
+          <h1>Stop chasing teachers for mark sheets.</h1>
+          <p class="lede">
+            Mmodemmo School Management System keeps attendance, levies, SBA marks, mock exams,
+            and report cards moving automatically — on one system your school owns completely.
+            No more weekends spent compiling report cards by hand.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Book a demo</a>
+            <a class="btn btn-ghost" href="#pricing">See pricing</a>
+          </div>
         </div>
-
-        <h1>
-          Every SBA & Mock Exams Marks, Enrolment & Attendance, Levies and SMS —
-          recorded once, in one connected system.
-        </h1>
-
-        <p class="lede">
-          Mmodemmo School Management System is a Windows desktop application
-          with a web/online companion portal that helps schools manage
-          school-based assessment (class exercises, terminal exams and mock
-          exams) with chart-based analysis, student records, attendance, levy
-          collection, and SMS updates to parents — with data synchronized
-          between the desktop application and the online portal.
-        </p>
-
-        <div class="hero-ctas">
-          <a
-            class="btn btn-primary btn-download"
-            href="https://github.com/cosmopolitechdev-tech/mmodemmo-sma-portal/releases/latest/download/MmodemmoSMASetup.exe"
-            download
-            >⬇ Download for Windows</a
-          >
-          <a class="btn btn-ghost" href="sales.html"
-            >See features &amp; pricing</a
-          >
-        </div>
-
-        <div class="hero-note">
-          Free installer &middot; Windows 10/11 &middot;
-          <a href="privacy.html">Privacy Policy</a>
+        <div class="report-card-photo">
+          <img src="./images/report_card_sample.png" alt="Sample Mmodemmo terminal report card" />
+          <div class="stamp-badge">READY<br />IN<br />SECONDS</div>
         </div>
       </div>
     </header>
 
     <div class="wrap">
-      <div class="section reveal" style="padding-top: 50px">
-        <div class="section-label">
-          <span class="num">01</span><span class="eyebrow">What it does</span>
-        </div>
-
+      <div class="section reveal" id="how" style="padding-top: 50px">
+        <div class="section-label"><span class="num">01</span><span class="eyebrow">How it works</span></div>
+        <div class="section-head" style="margin-top:-14px"><p>Three steps, then it runs itself.</p></div>
         <div class="grid">
           <div class="feat">
-            <span class="dot"></span>
-            <h3>SBA &amp; Mock Exam Marks</h3>
+            <div class="num">01</div>
+            <h3>Set up on the desktop</h3>
+            <p>Install Mmodemmo on one school computer, add your students, teachers, subjects and grading scale.</p>
+          </div>
+          <div class="feat">
+            <div class="num">02</div>
+            <h3>Add teachers &amp; hand out access</h3>
+            <p>On the Desktop + Online Portal tier, give each teacher a PIN and link to the online portal. On Desktop Only, hand out an Excel template instead — either way the data flows into the system.</p>
+          </div>
+          <div class="feat">
+            <div class="num">03</div>
+            <h3>Everything else is automatic</h3>
+            <p>Report cards, BECE analysis, SMS results to parents, and backups all happen without you touching a spreadsheet.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="section reveal" id="features">
+        <div class="section-label"><span class="num">02</span><span class="eyebrow">What's included</span></div>
+        <div class="section-head" style="margin-top:-14px"><p>What's included depends on which tier you choose — see Pricing below.</p></div>
+
+        <div class="ledger">
+          <div class="ledger-row">
+            <div class="who">Admin — Desktop</div>
+            <ul>
+              <li><b>Add and manage teachers</b>, assign them to classes, and issue portal PINs and links.</li>
+              <li><b>Enter and manage SBA marks</b> and (JHS only) mock exam marks directly on the desktop.</li>
+              <li><b>Custom subjects &amp; grading scales</b> — rename or add subjects and set grading bands to match your school's own standard.</li>
+              <li><b>Teacher records</b> — keep staff records and output-of-work on file inside the system.</li>
+              <li><b>Export anything</b> — attendance, levies, marks, and BECE results all export to PDF or Excel.</li>
+              <li><b>BECE Results Analysis</b> — import BECE result files (PDF/HTML) and get automatic chart-based analysis, exportable to Excel.</li>
+            </ul>
+          </div>
+
+          <div class="ledger-row">
+            <div class="who">Teachers — Online Portal (Tier 2 only)</div>
+            <ul>
+              <li>Mark attendance and record daily levy payments from any phone or computer browser.</li>
+              <li>Enter SBA marks, and (JHS only) mock exam marks.</li>
+              <li>Set behaviour attributes for assigned classes — Attitude, Conduct, Interest, and Remarks.</li>
+              <li>Prefer paper? Admin can hand out an Excel template instead — same data still flows into the system.</li>
+            </ul>
+          </div>
+
+          <div class="ledger-row">
+            <div class="who">Admin Dashboard — Online (Tier 2 only)</div>
+            <ul>
+              <li>See at a glance which teachers have submitted records and which haven't.</li>
+              <li>Export teacher records and SBA marks data directly from the portal.</li>
+              <li>Assign teachers to classes, and to attendance or levy-collection duties.</li>
+              <li>Revoke or reassign teacher access at any time — no need to involve the developer.</li>
+            </ul>
+          </div>
+
+          <div class="ledger-row">
+            <div class="who">Automatic Outputs</div>
+            <ul>
+              <li>Instant terminal report cards and mock exam report cards — no manual compilation.</li>
+              <li>SMS results delivery to parents for performance and mock exam results.</li>
+              <li>Custom meeting and notice SMS to staff and parents.</li>
+            </ul>
+          </div>
+
+          <div class="ledger-row">
+            <div class="who">Data Safety — Both Tiers</div>
+            <ul>
+              <li>Automatic backup sync into the school's own Google account — nothing depends on one machine.</li>
+              <li>Lost, stolen, or crashed computer? Reinstall on a new machine and restore everything from backup.</li>
+              <li>Your data stays inside your own Google account — never shared with, or visible to, other schools.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="section reveal" id="pricing">
+        <div class="section-label"><span class="num">03</span><span class="eyebrow">Pricing</span></div>
+        <div class="section-head" style="margin-top:-14px"><p>Two ways to buy, depending on what your school needs. Pricing is tailored to your school's size — contact us for a quote and demo.</p></div>
+
+        <div class="grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 24px;">
+          <div class="feat">
+            <span class="eyebrow" style="color: var(--gold)">Tier 1</span>
+            <h3>Desktop Only</h3>
             <p>
-              Entered once, feeding directly into automatic report cards — with built-in class-level and student-level performance charts.
-              Recorded on desktop or through the online portal, by admin or assigned teachers.
+              The full Windows desktop application — attendance, levies, SBA &amp; mock exam
+              marks, report cards, BECE analysis. Your database still backs up automatically
+              to your own Google Drive; the teacher online portal is not set up under this tier.
             </p>
           </div>
           <div class="feat">
-            <span class="dot"></span>
-            <h3>Automatic Report Card Generation</h3>
+            <span class="eyebrow" style="color: var(--gold)">Tier 2</span>
+            <h3>Desktop + Online Portal</h3>
             <p>
-              Terminal and mock exam report cards generated automatically as
-              marks come in.
-            </p>
-          </div>
-          <div class="feat">
-            <span class="dot"></span>
-            <h3>Attendance &amp; Levies</h3>
-            <p>
-              Recorded on desktop or through the online portal, by admin or
-              assigned teachers.
-            </p>
-          </div>
-          <div class="feat">
-            <span class="dot"></span>
-            <h3>SMS Notifications</h3>
-            <p>
-              Results sent to parents, and custom notices to staff and parents.
-            </p>
-          </div>
-          <div class="feat">
-            <span class="dot"></span>
-            <h3>BECE Results Analysis</h3>
-            <p>
-              Import BECE result files (HTMLs/PDFs) and get chart-based analysis, exportable
-              to Excel.
-            </p>
-          </div>
-          <div class="feat">
-            <span class="dot"></span>
-            <h3>Automatic Backup</h3>
-            <p>
-              The school database is backed up into the school's own Google
-              account.
+              Everything in Desktop Only, plus the online teacher portal — teachers record
+              attendance, levies, and marks from their own phone or computer using an
+              admin-issued PIN, with results feeding straight back into the desktop app.
             </p>
           </div>
         </div>
-      </div>
 
-      <hr class="rule" />
-
-      <div class="section reveal">
-        <div class="section-label">
-          <span class="num">02</span><span class="eyebrow">Who it's for</span>
-        </div>
-
-        <div class="who-list">
-          <span class="who-tag">School Owners & administrators</span>
-        </div>
-
-        <p style="color: var(--ink-soft); max-width: 70ch; margin: 14px 0 10px">
-          Access is controlled entirely by the school. The administrator sets up
-          the desktop application, then issues each teacher a PIN and portal
-          link for the specific classes and duties (attendance, levies, SBA &
-          mock exams marks) they are assigned to. Access can be reassigned or
-          revoked by the admin at any time.
-        </p>
-      </div>
-
-      <hr class="rule" />
-
-      <div class="section reveal">
-        <div class="section-label">
-          <span class="num">03</span><span class="eyebrow">Screenshots</span>
-        </div>
-
-        <div class="shots">
-          <div class="shot">
-            <video
-              autoplay
-              muted
-              loop
-              playsinline
-              poster="./images/sba_marks_screen_shot-poster.jpg"
-            >
-              <source
-                src="./images/sba_marks_screen_shot.mp4"
-                type="video/mp4"
-              />
-              SBA marks entry screenshot
-            </video>
-          </div>
-          <div class="shot">
-            <video
-              autoplay
-              muted
-              loop
-              playsinline
-              poster="./images/report_card-poster.jpg"
-            >
-              <source src="./images/report_card.mp4" type="video/mp4" />
-              Report card screenshot
-            </video>
-          </div>
-          <div class="shot">
-            <video
-              autoplay
-              muted
-              loop
-              playsinline
-              poster="./images/online_teacher_portal-poster.jpg"
-            >
-              <source
-                src="./images/online_teacher_portal.mp4"
-                type="video/mp4"
-              />
-              Online teacher portal screenshot
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <hr class="rule" />
-
-      <div class="section reveal">
-        <div class="section-label">
-          <span class="num">04</span><span class="eyebrow">Testimonials</span>
-        </div>
-
-        <!-- Draft quotes — swap for real feedback once these schools have used the app after re-opening -->
-        <div class="testi-grid">
-          <div class="testi">
-            <div class="stars">★★★★★</div>
-            <p>
-              "Mmodemmo SMS has made our record-keeping very easy. Attendance,
-              levies, and exam marks are all in one place now, and I can check
-              any student's records in seconds."
-            </p>
-            <div class="who">
-              Richard Odei<span
-                >ICT Coordinator, Paradise Preparatory School - Dome</span
-              >
-            </div>
-          </div>
-
-          <div class="testi">
-            <div class="stars">★★★★★</div>
-            <p>
-              "Since we started using Mmodemmo SMS, our report cards are ready as soon as marks are 
-               entered — a process that used to take days now takes hours, saving us so much time. 
-              We also know exactly which students have paid their levies and which have not."
-            </p>
-            <div class="who">
-              Benjamin Yankey<span
-                >ICT Coordinator, Kokoben M/A JHS - Atwima Kwanwoma</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="rule" />
-
-      <div class="section reveal">
-        <div class="section-label">
-          <span class="num">05</span
-          ><span class="eyebrow">Trust &amp; privacy</span>
-        </div>
-
-        <div class="info-card">
-          <h2>How your school's data is handled</h2>
-          <p>
-            The application syncs data to a Google Sheet that the school owns
-            and controls, and keeps an encrypted backup copy in the school's own
-            Google Drive. Nothing is shared with, or visible to, any other
-            school or third party. See the full
-            <a href="privacy.html">Privacy Policy</a> for details on the exact
-            permissions requested.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h2>Authentication &amp; Access control</h2>
-          <p>
-            The school administrator authenticates with their school's Google
-            account so the desktop application can sync data to that school's
-            own Google Sheet and store a backup copy in that school's own Google
-            Drive. Teacher access to the online portal is separately controlled
-            through admin-issued PINs, not through Google sign-in.
-          </p>
-
-          <p>
-            We take reasonable technical and organizational measures to protect
-            information against unauthorized access, alteration, disclosure, or
-            destruction.
-          </p>
-
-          <a class="link-btn" href="privacy.html">Read our Privacy Policy →</a>
-        </div>
-
-        <div class="info-card">
-          <h2>Google Account Access</h2>
-
-          <p>
-            Mmodemmo School Management System requests only the Google
-            permissions needed to sync and back up a school's own records:
-          </p>
-
-          <ul>
-            <li>
-              <b>Google Sheets</b> — to read and write the school's own student,
-              teacher, attendance, and fee records.
-            </li>
-            <li>
-              <b>Google Drive (app-created files only)</b> — to store an
-              encrypted backup of the school's database in a folder the app
-              creates inside that school's own Drive. The App cannot see or
-              access the rest of a school's Drive.
-            </li>
-          </ul>
-
-          <p>
-            Mmodemmo School Management System does not request access to Gmail,
-            Calendar, Contacts, or any other Google service, and does not use
-            Google account data for advertising.
-          </p>
-        </div>
-      </div>
-
-      <hr class="rule" />
-
-      <div class="section reveal">
-        <div class="section-label">
-          <span class="num">06</span><span class="eyebrow">FAQs</span>
-        </div>
-
-        <div class="section reveal">
-        <div class="section-label">
-          <span class="num">06</span><span class="eyebrow">FAQs</span>
-        </div>
-        <div class="faq">
-          <details class="faq-item">
-            <summary>
-              What happens if a school computer is lost or damaged?
-            </summary>
-            <p>
-              Nothing is lost. Your live records are already synced to your
-              school's own Google Sheet, and a full encrypted database backup is
-              saved automatically to your school's own Google Drive. Install the
-              app on a replacement computer, sign in with the same school Google
-              account, and restore the latest backup to pick up exactly where
-              you left off.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>
-              What if our school doesn't have reliable internet?
-            </summary>
-            <p>
-              The desktop app is built offline-first — enter marks, attendance,
-              and levies with no connection at all. It syncs to your school's
-              Google Sheet and Drive backup automatically the next time you're
-              online.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>
-              Does my school need internet to use the desktop app?
-            </summary>
-            <p>
-              No — the desktop app works offline for day-to-day use. It syncs to
-              your school's Google Sheet and Drive backup whenever you're
-              connected.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>
-              Can Mmodemmo School Management App see files elsewhere in our
-              Google Drive?
-            </summary>
-            <p>
-              No. It only accesses the Sheet you connect and a folder it creates
-              itself in your Drive for backups — nothing else in your account.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>
-              How do teachers get access without a Google sign-in?
-            </summary>
-            <p>
-              The admin issues each teacher a PIN and a portal link scoped to
-              their classes and duties. Access can be changed or revoked at any
-              time.
-            </p>
-          </details>
-          <details class="faq-item">
-              <summary>
-                Can more than one person use the app on the desktop at the same time?
-              </summary>
-              <p>
-                The desktop application itself is used by one person at a time — it's
-                installed on a single machine and only one account can be logged in at
-                once, even though the admin can create multiple user accounts. Real
-                concurrency comes from the online portal: teachers can record data at the
-                same time as each other (and while the admin is using the desktop app) from
-                their own phone or computer using their PIN, without conflicts, because the
-                portal runs separately from the desktop application.
-              </p>
-          </details>
-          <details class="faq-item">
-            <summary>
-              What happens if a teacher leaves the school or loses their PIN?
-            </summary>
-            <p>
-              The admin can revoke or reissue any teacher's PIN at any time from
-              the desktop app, immediately cutting off or restoring their access
-              to the portal.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>What does it cost?</summary>
-            <p>
-              See <a href="sales.html">full features &amp; pricing</a> for
-              current plans.
-            </p>
-          </details>
-        </div>
-      </div>
-
-      <hr class="rule" />
-
-      <div class="section reveal">
-        <div class="section-label">
-          <span class="num">07</span><span class="eyebrow">Support</span>
-        </div>
-
-        <p style="color: var(--ink-soft); max-width: 70ch; margin: 0 0 10px">
-          For questions about account access, privacy, or using the application,
-          contact
-          <a class="support-email" href="mailto:cosmopolitech.dev@gmail.com"
-            >cosmopolitech.dev@gmail.com</a
-          >.
-        </p>
-
-        <div
-          class="info-card"
-          style="
-            display: flex;
-            gap: 24px;
-            align-items: center;
-            flex-wrap: wrap;
-          "
-        >
-          <img
-            src="./images/whatsapp-qr.png"
-            alt="WhatsApp QR code — scan to chat with Mmodemmo support"
-            width="140"
-            height="140"
-            style="border-radius: 6px; flex-shrink: 0"
-          />
-          <div>
-            <h2>Prefer WhatsApp?</h2>
-            <p>
-              Scan the QR code with your phone's camera, or tap the link below,
-              to chat with us directly on WhatsApp.
-            </p>
-            <a
-              class="link-btn"
-              href="https://wa.me/233205334596"
-              target="_blank"
-              rel="noopener"
-              >💬 Chat on WhatsApp: 0205334596</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="section reveal cta-banner">
         <div class="cta-card">
           <div>
-            <div class="eyebrow" style="color: var(--stamp)">
-              Ready when you are
-            </div>
-            <h2 style="font-size: 1.4rem; margin-top: 6px">
-              Download the installer and set up your school in minutes.
-            </h2>
+            <h2>One-time purchase. No subscription. No expiry.</h2>
+            <p>Pay once and own it — no recurring fees, no yearly renewal, no feature paywall, for either tier.</p>
           </div>
+          <a class="btn btn-primary" href="#contact">Get pricing &amp; a demo</a>
+        </div>
+      </div>
 
-          <a
-            class="btn btn-primary btn-download"
-            href="https://github.com/cosmopolitechdev-tech/mmodemmo-sma-portal/releases/latest/download/MmodemmoSMASetup.exe"
-            download
-            >⬇ Download for Windows</a
-          >
+      <hr class="rule" />
+
+      <div class="section reveal" id="faq">
+        <div class="section-label"><span class="num">04</span><span class="eyebrow">FAQs</span></div>
+        <div class="section-head" style="margin-top:-14px"><p>Questions schools ask before buying.</p></div>
+
+        <div class="faq">
+          <p class="faq-group-title">Tiers</p>
+          <details class="faq-item"><summary>What's the difference between the two tiers?</summary><p>Desktop Only gives you the full desktop application — attendance, levies, SBA &amp; mock exam marks, report cards, and BECE analysis, with automatic Google Drive backup. Desktop + Online Portal adds the online teacher portal on top, so teachers can record attendance, levies, and marks from their own phone or computer using an admin-issued PIN.</p></details>
+          <details class="faq-item"><summary>Can I add the online portal later if I start with Desktop Only?</summary><p>Yes — you can upgrade from Desktop Only to Desktop + Online Portal at any time. Your existing records carry over; nothing needs to be re-entered.</p></details>
+
+          <p class="faq-group-title">Setup &amp; Access</p>
+          <details class="faq-item"><summary>Do I need internet to use the app?</summary><p>The desktop app works fully offline. Only the online portal (for teacher access), SMS sending, and backup sync need an internet connection.</p></details>
+          <details class="faq-item"><summary>Do teachers need to install anything?</summary><p>No — on the Desktop + Online Portal tier, teachers use the online portal from any phone or computer browser with the PIN and link you give them; no software install required. On Desktop Only, there's no portal — teachers record on an Excel template instead.</p></details>
+          <details class="faq-item"><summary>What if a teacher isn't comfortable using the portal?</summary><p>On the Desktop + Online Portal tier, yes — you can hand out an Excel template instead, and they fill in marks manually for you to import. On Desktop Only, Excel is how all teachers record data, since there's no portal on that tier.</p></details>
+          <details class="faq-item"><summary>How many teachers or students can I add?</summary><p>No limit — add as many teachers and students as your school needs.</p></details>
+
+          <p class="faq-group-title">Cost</p>
+          <details class="faq-item"><summary>Is this a subscription?</summary><p>No. It's a one-time purchase with no recurring fees and no expiry date.</p></details>
+          <details class="faq-item"><summary>Are there any extra costs, like for SMS?</summary><p>Yes — SMS results and notices are sent through a third-party SMS gateway (Arkesel), which bills separately at a low per-message rate. In practice this typically works out to around GH₵20–30 per term for a school, depending on how many messages are sent.</p></details>
+          <details class="faq-item"><summary>Do I get free updates?</summary><p>Regular bug-fix updates are free. Major version upgrades — ones that add significant new functionality — may carry a separate upgrade fee.</p></details>
+          <details class="faq-item"><summary>How will I know when an update is available?</summary><p>The app checks automatically each time it opens and shows a small in-app notice if a newer version exists — just click through to download it and run the new installer over the old one. No uninstalling, and your school data is untouched either way.</p></details>
+
+          <p class="faq-group-title">Data Safety</p>
+          <details class="faq-item"><summary>What happens if the computer is lost, stolen, or crashes?</summary><p>Your data is backed up automatically to the school's own Google account. Reinstall the app on any new machine and restore everything from that backup.</p></details>
+          <details class="faq-item"><summary>Is our data shared with anyone, or with other schools?</summary><p>No. All data stays inside your school's own Google account at all times — it is never shared with or visible to any other school or third party.</p></details>
+          <details class="faq-item"><summary>Who can see our student records?</summary><p>Only staff the admin adds and grants access to. The admin controls every permission and can revoke access at any time.</p></details>
+
+          <p class="faq-group-title">Day-to-Day Use</p>
+          <details class="faq-item"><summary>How are report cards generated?</summary><p>Automatically, as soon as marks are entered — both terminal and mock exam report cards, with no manual compilation.</p></details>
+          <details class="faq-item"><summary>Can I customize subjects and grading?</summary><p>Yes — admins can rename or add subjects and adjust grading scales to match their school's own standard.</p></details>
+          <details class="faq-item"><summary>Can parents receive results directly?</summary><p>Yes, by SMS — performance and mock exam results can be sent straight to parents, along with custom meeting or notice messages.</p></details>
+          <details class="faq-item"><summary>Can I get my data out if I ever stop using the app?</summary><p>Yes — every record, including attendance, levies, and marks, can be exported to PDF or Excel at any time.</p></details>
+
+          <p class="faq-group-title">Support</p>
+          <details class="faq-item"><summary>What if something breaks or I don't understand a feature?</summary><p class="todo">[Fill in your actual support channel and response expectations — e.g. WhatsApp support during school hours.]</p></details>
+          <details class="faq-item"><summary>Is training provided when I buy?</summary><p class="todo">[Fill in whether onboarding/setup help is included.]</p></details>
+        </div>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="section reveal" id="contact" style="padding-bottom:54px">
+        <div class="section-label"><span class="num">05</span><span class="eyebrow">See it working</span></div>
+        <div class="section-head" style="margin-top:-14px"><p>Watch a short walkthrough, or message on WhatsApp to see the system on your own school's data.</p></div>
+
+        <div class="contact-card">
+          <div>
+            <div class="video-frame">
+              <!-- Replace VIDEO_ID with your YouTube video ID -->
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="How Mmodemmo School Management System works" allowfullscreen></iframe>
+            </div>
+            <div class="contact-links">
+              <a href="mailto:cosmopolitech.dev@gmail.com">✉ cosmopolitech.dev@gmail.com</a>
+              <a href="https://wa.me/233205334596" target="_blank" rel="noopener">💬 WhatsApp: +233 20 533 4596</a>
+            </div>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/233205334596" alt="Scan to chat on WhatsApp" />
+            <div class="cap">Scan to chat on WhatsApp</div>
+            <a class="btn btn-primary" style="margin-top: 14px; width: 100%; justify-content:center" href="https://wa.me/233205334596">Message on WhatsApp</a>
+          </div>
         </div>
       </div>
 
       <footer>
         <div class="small">
-          © <span id="y"></span> Mmodemmo School Management System &middot;
-          Contact:
-          <a href="mailto:cosmopolitech.dev@gmail.com"
-            >cosmopolitech.dev@gmail.com</a
-          >
+          © <span id="y"></span> Mmodemmo School Management System &middot; All data stays inside your school's own Google account.
         </div>
-
         <div class="flinks">
-          <a href="sales.html">Full features &amp; pricing</a>
+          <a href="index.html">Home</a>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms &amp; Conditions</a>
         </div>
@@ -1453,9 +506,7 @@
         });
       }
 
-      // Scroll-triggered reveal
       var reveals = document.querySelectorAll(".reveal");
-
       if ("IntersectionObserver" in window) {
         var io = new IntersectionObserver(
           function (entries) {
@@ -1468,31 +519,9 @@
           },
           { threshold: 0.12 },
         );
-
-        reveals.forEach(function (el) {
-          io.observe(el);
-        });
+        reveals.forEach(function (el) { io.observe(el); });
       } else {
-        reveals.forEach(function (el) {
-          el.classList.add("in");
-        });
-      }
-
-      // Ambient chalk dust in hero
-      var dustHost = document.getElementById("chalkDust");
-      var prefersReduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-      if (dustHost && !prefersReduced) {
-        for (var i = 0; i < 16; i++) {
-          var s = document.createElement("span");
-          s.style.left = Math.random() * 100 + "%";
-          s.style.top = 40 + Math.random() * 50 + "%";
-          s.style.animationDelay = Math.random() * 7 + "s";
-          s.style.animationDuration = 5 + Math.random() * 4 + "s";
-          dustHost.appendChild(s);
-        }
+        reveals.forEach(function (el) { el.classList.add("in"); });
       }
     </script>
   </body>
