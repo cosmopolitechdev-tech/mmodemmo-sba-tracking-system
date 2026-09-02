@@ -431,6 +431,17 @@
         color: var(--board);
       }
 
+      .btn-demo {
+        background: var(--gold);
+        color: var(--board);
+        justify-content: center;
+      }
+      .btn-demo:hover {
+        transform: translateY(-2px) scale(1.02);
+        background: #f0c978;
+        color: var(--board);
+      }
+
       .btn-download {
         position: relative;
       }
@@ -994,10 +1005,9 @@
             download
             >⬇ Download for Windows</a
           >
-          <!-- <a class="btn btn-ghost" href="sales.html"
-            >See features &amp; pricing</a
-          > -->
-          <a class="btn btn-ghost" href="sales.html#contact">Book a demo</a>
+          <a id="bookDemoBtn" class="btn btn-demo" href="sales.html#contact"
+            >Book a demo</a
+          >
         </div>
 
         <div class="hero-note">
